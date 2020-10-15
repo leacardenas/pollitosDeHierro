@@ -1,0 +1,10 @@
+com/pdh/pollitosdehierroapp/entity/PdhHeadquarter.class
+com/pdh/pollitosdehierroapp/util/JsfUtil.class
+com/pdh/pollitosdehierroapp/entity/PdhGeolocations.class
+com/pdh/pollitosdehierroapp/entity/PdhRole.class
+com/pdh/pollitosdehierroapp/dao/KidDAO.class
+com/pdh/pollitosdehierroapp/managed/KidManaged.class
+com/pdh/pollitosdehierroapp/entity/PdhKid.class
+com/pdh/pollitosdehierroapp/dao/AbstractFacade.class
+com/pdh/pollitosdehierroapp/entity/PdhUser.class
+com/pdh/pollitosdehierroapp/util/Utils.class

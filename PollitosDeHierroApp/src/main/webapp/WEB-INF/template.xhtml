@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <f:view>
+        <h:head>
+            <script src="#{request.contextPath}/resources/fontawesome-pro-5.10.2-web/js/all.js" type="text/javascript"></script>
+            <link href="#{request.contextPath}/resources/fontawesome-pro-5.10.2-web/css/all.css" rel="stylesheet" type="text/css" media='all'/>
+
+            <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/javax.faces.resource/images/toursysX13/FavIcon-Toursysx13.png.xhtml?ln=babylon-layout"/> 
+
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            </f:facet>
+            <title><ui:insert name="title">Pollitos de Hierro</ui:insert></title>
+            <ui:insert name="head"/>
+        </h:head>
+
+        <h:body>
+            <div class="layout-main">     
+                <div class="route-bar">
+                    <p:outputLabel value="Pollitos de Hierro App" style="color: blue; font-size: 24px"/>
+                    <br/><br/>
+                    <p:separator/>
+                </div> 
+                <ui:insert name="content"></ui:insert>
+            </div>
+
+            <!-- footer -->
+            <div class="layout-footer position-footer">
+                <div class="content-footer">
+                    <i class="fal fa-copyright"></i>Copyright 2020 <br></br>                    
+                </div>
+            </div>
+
+            <p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" onerror="PF('statusDialog').hide()"/>
+
+            <p:dialog style="border-radius: 50%;" id="dialogAjaxStatus" widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <i class="fal fal fa-cog fa-spin layout-ajax-loader-icon" aria-hidden="true" style="font-size: 60px;color: #2196F3"></i>
+            </p:dialog>
+
+            <div class="layout-mask"></div>
+        </h:body>
+    </f:view>
+</html>

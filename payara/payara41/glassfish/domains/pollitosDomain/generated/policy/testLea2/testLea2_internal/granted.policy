@@ -1,0 +1,65 @@
+/* AUTOMATICALLY GENERATED ON Wed Sep 23 18:31:39 CST 2020*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "Demo", "getPdhDemoId,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setSession,Local,org.eclipse.persistence.sessions.Session";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "merge,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getSession,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getRelationships,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getId,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_checkFetched,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_new,Local,org.eclipse.persistence.internal.descriptors.PersistenceObject";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_get,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getPropertyChangeListener,Local,";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "edit,Local,com.mycompany.model.Demo";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getLinks,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setShouldRefreshFetchGroup,Local,boolean";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getHref,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_checkFetchedForSet,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "findAll,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_set_pdhDemoId,Local,java.lang.Integer";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "setPdhDemoId,Local,java.lang.Integer";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_set_pdhDemoName,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_shallow_clone,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_set_pdhDemoNumber,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_set,Local,java.lang.String,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "delete,Local,com.mycompany.model.Demo";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "toString,Local,";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "refresh,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "equals,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_resetFetchGroup,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setLinks,Local,org.eclipse.persistence.internal.jpa.rs.metadata.model.ItemLinks";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_isAttributeFetched,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "setPdhDemoNumber,Local,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setPropertyChangeListener,Local,java.beans.PropertyChangeListener";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_propertyChange,Local,java.lang.String,java.lang.Object,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setCacheKey,Local,org.eclipse.persistence.internal.identitymaps.CacheKey";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "remove,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setId,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_get_pdhDemoId,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "getPdhDemoName,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setFetchGroup,Local,org.eclipse.persistence.queries.FetchGroup";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getCacheKey,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setHref,Local,org.eclipse.persistence.internal.jpa.rs.metadata.model.Link";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_get_pdhDemoName,Local,";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "findAllDemo,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_setRelationships,Local,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_getFetchGroup,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_get_pdhDemoNumber,Local,";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "create,Local,com.mycompany.model.Demo";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "getPdhDemoNumber,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_post_clone,Local,";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "persist,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "find,Local,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "hashCode,Local,";
+  permission javax.security.jacc.EJBMethodPermission "DemoDAO", "find,Local,java.lang.Integer";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "_persistence_shouldRefreshFetchGroup,Local,";
+  permission javax.security.jacc.EJBMethodPermission "Demo", "setPdhDemoName,Local,java.lang.String";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "DemoDAO", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "Demo", "**";
+};
+
