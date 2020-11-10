@@ -1,0 +1,58 @@
+<xhtml xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:of="http://omnifaces.org/functions"
+       xmlns:pe="http://primefaces.org/ui/extensions">
+    
+    <f:view>
+        
+        <h:head>
+            <link href="#{request.contextPath}/resources/fontawesome-pro-5.10.2-web/css/all.css" rel="stylesheet" type="text/css" media='all'/>
+            
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+            </f:facet>
+            
+            <title>Pollitos de Hierro - error</title>
+            <ui:insert name="head" />
+            <h:outputScript rendered="#{facesContext.partialViewContext.ajaxRequest}">
+                document.body.className = "exception-body error";
+            </h:outputScript>
+        </h:head>
+        
+        <h:body styleClass="exception-body error">
+            
+            <div class="exception-panel"></div>
+            
+            <div class="exception-content"  style="padding-left: 50px;padding-top: 25px;overflow: auto">
+                
+                <h:graphicImage name="images/dog.jpeg" library="babylon-layout" style="width:100%; max-width:600px;"/>
+                
+                <h2>¡Oh no! Algo sucedio</h2>
+                <h2>Por favor contacte a su equipo técnico, muchas gracias.</h2>
+                
+                <div class="Separator"></div>
+                
+                <div class="Wid100">
+                    <p:button value="Volver al inicio" icon="fa fa-dashboard" styleClass="RedButton Wid60 Fs18 White RaisedButton" outcome="/dashboard.xhtml"/>
+                </div>
+                
+                <br/><br/>
+                
+                <div class="layout-footer position-footer">
+                    <div class="content-footer" style="width: auto; margin: auto; text-align: center;">
+                        <i class="fal fa-copyright">  </i>Fundación Pollitos de Hierro 2020 - Creditos a LCA<br></br>   
+                    </div>
+                </div>
+                
+            </div>                
+        </h:body>
+        <h:outputStylesheet name="css/layout-#{userLoginManaged.layout}.css" library="babylon-layout" />
+        <h:outputStylesheet name="css/style-login.css" library="babylon-layout" />
+    </f:view>
+</xhtml>

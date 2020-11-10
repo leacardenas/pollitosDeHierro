@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link href="resources/fontawesome-pro-5.10.2-web/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        </f:facet>
+        
+        <title>Pollitos de Hierro</title>
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body styleClass="login-body">
+
+        <div class="login-content">              
+            <h:form id="loginForm">
+                <p:growl life="10000" id="generalGrowl" escape="false" showDetail="true" showSummary="false" sticky="false"><p:autoUpdate/></p:growl>
+                <!--<h:graphicImage value="images/logo-pollitos.png" library="babylon-layout" style="width:100%; max-width: 400px;"/>-->
+                
+                <h1>Entrada al sistema:</h1>
+
+                <div class="login-input-wrapper">
+                    <p:inputText id="userName" placeholder="Usuario" styleClass="Wid80 TexAlCenter Fs18" value="#{userLoginManaged.userName}" required="true" requiredMessage="El usuario es un campo requerido."/>
+                    <i class="fa fa-user" />
+                </div>
+
+                <div class="login-input-wrapper">
+                    <p:inputText id="password" type="password" placeholder="Contraseña" styleClass="Wid80 TexAlCenter Fs18"  value="#{userLoginManaged.password}" required="true" requiredMessage="La contraseña es un campo requerido."/>
+                    <i class="fa fa-lock" />
+                </div>
+
+                <p:commandButton id="loginButton" style="background-color: #DE6449; border: 1px solid #DE6449;right: 2px;" value="Entrar" icon="fa fa-sign-in" styleClass=" Fs14 White RaisedButton Fright FloatNoneOnMobile"  action="#{userLoginManaged.login(event)}" update="loginForm"/>
+
+                <p:button id="forgetButton" style="background-color: #407899; border: 1px solid #407899;right: 2px;" href="forgot-password.xhtml" value="¿Olvido la contraseña?" icon="fa fa-lock" styleClass="RedButton Fs14 White RaisedButton Fleft FloatNoneOnMobile"/>                
+            </h:form>
+            <br/>
+            <div class="TexAlCenter Gray">
+                <i class="fal fa-copyright">  </i>Fundación Pollitos de Hierro 2020 - Creditos a LCA<br></br>                   
+            </div>
+        </div>
+
+        <h:outputStylesheet name="css/layout-#{userLoginManaged.layout}.css" library="babylon-layout" />
+        <h:outputStylesheet name="css/style-login.css" library="babylon-layout" />
+    </h:body>
+
+</html>

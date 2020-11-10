@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+    <div class="layout-topbar">
+        <h:link outcome="/dashboard" styleClass="layout-topbar-logo">
+            <h:graphicImage name="images/logo-pollitos.png" library="babylon-layout" />
+        </h:link>
+
+        <a class="layout-menu-button" href="#">
+            <i class="fa fa-bars" />
+        </a>
+
+        <a id="topbar-menu-button" href="#">
+            <i class="fa fa-ellipsis-v"></i>
+        </a>
+
+        <ul class="topbar-menu fadeInDown">
+            <li class="user-profile">
+                <h:form id="editUserCompany">
+                    <p:commandLink process="@this" resetValues="true" id="button-edit-company" onclick="PF('edit-own-dialog').show();" update="editFormOwnInformation">
+                        <i class="fal fa-user"></i>
+                        <f:param value="#{userLoginManaged.user.pdhUserId}" name="id"/> 
+                    </p:commandLink>
+                </h:form>
+                <p:growl id="messages1" showDetail="true" showSummary="false"/>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="topbar-icon fal fa-sign-out-alt Fs30"></i>
+                    <span class="topbar-item-name">Sistema</span>
+                </a> 
+                <ul>
+                    <h:form>
+                        <li role="menuitem">
+                            <p:commandLink action="#{userLoginManaged.logOut()}" value="Salir"/>                       
+                        </li>
+                    </h:form>
+                </ul>
+            </li>
+            <!--
+            <li>
+                <a href="#">
+                    <i class="topbar-icon fal fa-globe Fs30"></i>
+                    <span class="topbar-item-name">Cambiar lenguage</span>
+                </a>
+                
+                <ul class="language">
+                    <h:form>
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('en')}" class="topbar-message">
+                                <h:graphicImage value="/resources/babylon-layout/images/united-states.png"/>   
+                                <span>English</span>
+                            </h:commandLink>
+                        </li>
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('es')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/spain.png" />                          
+                                <span>Spanish</span> 
+                            </h:commandLink>
+                        </li>
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('fr')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/france.png" />                          
+                                <span>French</span> 
+                            </h:commandLink>
+                        </li>
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('pt')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/brazil.png" />                          
+                                <span>Portuguese</span> 
+                            </h:commandLink>
+                        </li>
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('it')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/italy.png" />                          
+                                <span>Italian</span> 
+                            </h:commandLink>
+                        </li>
+
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('no')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/norwegian.png" />                          
+                                <span>Norsk</span> 
+                            </h:commandLink>
+                        </li>    
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('nl')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/netherlands.png" />                          
+                                <span>Nederlands</span>     
+                            </h:commandLink>
+                        </li> 
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('iw')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/israel.png" />                          
+                                <span>עִברִית</span>     
+                            </h:commandLink>
+                        </li> 
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('zh')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/chinese.png" />                          
+                                <span>Chinese</span>    
+                            </h:commandLink>
+                        </li>
+
+                        <li role="menuitem">
+                            <h:commandLink action="#{localeBean.changeLanguage('de')}">
+                                <h:graphicImage value="/resources/babylon-layout/images/germany.png" />                          
+                                <span>Deutsch</span>     
+                            </h:commandLink>
+                        </li>
+                    </h:form>
+                </ul>
+            </li>
+            -->
+            <li>      
+                <a href="#" class="topValues">                    
+                    <span class="topbar-icon" style="display: flex;">
+                        <div style="display: flex;padding-left: 5px;">
+                            <i class="topbar-icon topValue fal fa-user"></i>
+                            <p:outputLabel styleClass="topValue" value=" #{userLoginManaged.user.pdhUserName}"/> 
+                        </div>
+
+                        <div style="display: flex;padding-left: 5px;">
+                            <i class="topbar-icon topValue fal fa-lock-alt"></i> 
+                            <p:outputLabel styleClass="topValue" value=" #{userLoginManaged.user.pdhUserRole.pdhRoleName}"/>
+                        </div>
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </div>
+
+    <ui:include src="../users/editOwnInformation.xhtml"></ui:include>
+</ui:composition>
+

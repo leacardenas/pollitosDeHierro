@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <p:dialog  header="#{msg['FORM.DELETE']} #{msg['BANK']}" maximizable="true" widgetVar="dlg4" modal="true" dynamic="true" >
+        <div class="card card-w-title resolution-center ui-fluid">
+            <h:form id="deleteForm">
+                <h:outputLabel value="#{msg['DELETE.MESSAGE']} #{msg['BANK']}
+                               #{banksManaged.requestedBankById.bankCode}-#{banksManaged.requestedBankById.bankName} ?"/>		                       
+                <br/><br/>
+                <p:commandLink id="button-delete" styleClass="Fleft" action="#{banksManaged.deleteBank}" update="deleteForm" oncomplete="if (!args.validationFailed){PF('bankTable').filter();}">                                    
+                    <i class="fal fa-trash-alt  Fs30"></i>
+                </p:commandLink>
+                <p:commandLink process="@this" resetValues="true" id="button-dismiss" onclick="PF('dlg4').hide()();" styleClass="Fleft">
+                    <i class="fal fa-reply-all  Fs30"></i>
+                </p:commandLink>
+                <p:tooltip position="top" for="button-dismiss" value="#{msg['BUTTON.DISMISS']}"/>
+                <p:tooltip position="top" for="button-delete" value="#{msg['BUTTON.DELETE']}"/>                   
+            </h:form>
+            <br/>
+        </div>
+    </p:dialog>    
+</ui:composition>

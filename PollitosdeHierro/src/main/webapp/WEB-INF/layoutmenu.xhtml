@@ -1,0 +1,23 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <div class="layout-menu-container layout-menu-slim">
+        <!--layoutHorizontal-->
+        <div class="layout-menu-logo">
+            <h:link outcome="/dashboard">
+            </h:link>
+        </div>
+
+        <div class="nano layout-menu-wrapper">
+            <div class="nano-content menu-scroll-content">
+                <h:form id="menuform">
+                    <p:growl life="10000" id="generalGrowl"  escape="false" showDetail="true" showSummary="false"> <p:autoUpdate /> </p:growl>
+                    <ui:include src="#{userLoginManaged.groupedMenu}.xhtml" />
+                </h:form>
+            </div>
+        </div>
+    </div>
+</ui:composition>

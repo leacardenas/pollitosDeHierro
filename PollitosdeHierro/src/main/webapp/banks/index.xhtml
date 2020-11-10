@@ -1,0 +1,158 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- SUB TOPBAR START -->   
+    <ui:define name="viewname">
+        <li> 
+            <p:link outcome="/dashboard"> #{msg['DASHBOARD']}</p:link><p:link outcome="/company-panel"><i class="fal fa-long-arrow-right"></i> #{msg['COMPANY.PANEL']}</p:link><p:link><i class="fal fa-long-arrow-right"></i> #{msg['OPTION.BANKS']}</p:link>                                                                          
+        </li>
+    </ui:define> 
+
+    <ui:define name="content">
+
+        <div class="card card-w-title resolution-center ui-fluid">  
+
+            <h:form  id="form">   
+                <!-- SUB TOPBAR END -->
+                <div class="TexAlCenter">
+
+                    <div class="TexAlLeft">
+                        <c:if test="#{permissionsManaged.validatePermissions('OPTION.BANKS', 'create')}">
+                            <div class="TexAlLeft">      
+                                <p:commandLink process="@this" resetValues="true" id="button-create" styleClass="Fleft" onclick="PF('dlg2').show();">                                    
+                                    <i class="fal fa-plus-circle Fs30"></i>
+                                </p:commandLink>
+                                <p:tooltip position="top" for="button-create" value="#{msg['BUTTON.CREATE']}"/>
+
+                            </div> 
+                        </c:if>
+
+                        <p:link  id="button-dismiss" outcome="/company-panel" styleClass="Fleft">
+                            <i class="fal fa-reply-all  Fs30"></i>
+                        </p:link>
+
+                        <p:tooltip position="top" for="button-dismiss" value="#{msg['BUTTON.DISMISS']}"/>               
+                    </div>
+
+                    <h2 class="CardTopic TexAlCenter Fs25"><i class="fal fa-university"></i> #{msg['OPTION.BANKS']}</h2>
+
+                    <c:if test="#{permissionsManaged.validatePermissions('OPTION.BANKS', 'export')}">
+                        <h:commandLink id="exportExcel">
+                            <i class="fal fa-file-excel Fs30"></i>
+                            <p:dataExporter encoding="ISO-8859-1" type="xls" target="bankTable" fileName="#{msg['OPTION.BANKS']}" />
+                        </h:commandLink>
+
+                        <h:commandLink id="exportPDF">
+                            <i class="fal fa-file-pdf Fs30"></i>
+                            <p:dataExporter encoding="ISO-8859-1" type="pdf" target="bankTable" fileName="#{msg['OPTION.BANKS']}"/>
+                        </h:commandLink>
+
+                        <h:commandLink id="exportCSV">
+                            <i class="fal fa-file-alt Fs30"></i>
+                            <p:dataExporter encoding="ISO-8859-1" type="csv" target="bankTable" fileName="#{msg['OPTION.BANKS']}" />
+                        </h:commandLink>
+
+                        <h:commandLink id="exportXML">
+                            <i class="fal fa-file-code Fs30"></i>
+                            <p:dataExporter encoding="ISO-8859-1" type="xml" target="bankTable" fileName="#{msg['OPTION.BANKS']}" />
+                        </h:commandLink>
+                        <p:tooltip position="top" for="exportExcel" value="#{msg['HELP.BUTTON.EXPORT.EXCEL']}"/>
+                        <p:tooltip position="top" for="exportPDF" value="#{msg['HELP.BUTTON.EXPORT.PDF']}"/>
+                        <p:tooltip position="top" for="exportCSV" value="#{msg['HELP.BUTTON.EXPORT.CSV']}"/>
+                        <p:tooltip position="top" for="exportXML" value="#{msg['HELP.BUTTON.EXPORT.XML']}"/>
+                    </c:if>
+
+                    <p:growl life="10000" id="generalGrowl"  escape="false" showDetail="true" showSummary="false"> <p:autoUpdate /> </p:growl>
+                    <p:dataTable reflow="true" multiViewState="true" filterDelay="1300"  id="bankTable" var="bank" value="#{banksManaged.banks}" widgetVar="bankTable" paginator="true" 
+                                 selectionMode="single" rowKey="#{bank.bankId}"
+                                 rows="70" emptyMessage="#{bundle.ListCurrenciesEmpty}"  rowsPerPageTemplate="70,90,120" 
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+                                 filteredValue="#{banksManaged.filteredBanks}"
+                                 >     
+                        <p:ajax event="filter" ignoreAutoUpdate="true" />
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <p:outputLabel value="#{msg['SEARCH.ALL.FIELDS']}" />
+                                <br/><p:inputText id="globalFilter" onblur="PF('bankTable').filter()" style="width:90%" placeholder="#{msg['ENTER.KEYWORD']}"/>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:column style="width:20px" exportable="false"> 
+                            <p:commandLink rendered="#{(bank.bankCreatedBy.userName != null and bank.bankCreatedBy.userName != '') or !(bank.bankUpdatedBy.userName == null or bank.bankUpdatedBy.userName == '')}" process="@this" id="updateCreatedBy" styleClass="Fleft">                                    
+                                <i class="fal fa-address-card Fs15"></i>
+                            </p:commandLink>
+                            <p:tooltip position="top" for="updateCreatedBy" value="#{msg['GENERAL.INFORMATION.CREATED.BY']}: #{bank.bankCreatedBy.userName} 
+                                       #{userLoginManaged.formatDateWithHour(bank.bankDateCreated)}" 
+                                       rendered="#{(bank.bankUpdatedBy.userName == null or bank.bankUpdatedBy.userName == '')}"/>     
+                            <p:tooltip position="top" for="updateCreatedBy" value="#{msg['GENERAL.INFORMATION.CREATED.BY']}: #{bank.bankCreatedBy.userName} 
+                                       #{userLoginManaged.formatDateWithHour(bank.bankDateCreated)} 
+                                       #{msg['GENERAL.INFORMATION.UPDATED.BY']}: #{bank.bankUpdatedBy.userName} 
+                                       #{userLoginManaged.formatDateWithHour(bank.bankDateUpdated)}" 
+                                       rendered="#{!(bank.bankUpdatedBy.userName == null or bank.bankUpdatedBy.userName == '') and !(bank.bankCreatedBy.userName == null and bank.bankCreatedBy.userName == '')}"/>
+                            <p:tooltip position="top" for="updateCreatedBy" value="#{msg['GENERAL.INFORMATION.UPDATED.BY']}: #{bank.bankUpdatedBy.userName} 
+                                       #{userLoginManaged.formatDateWithHour(bank.bankDateUpdated)}" 
+                                       rendered="#{!(bank.bankUpdatedBy.userName == null or bank.bankUpdatedBy.userName == '') and (bank.bankCreatedBy.userName == null or bank.bankCreatedBy.userName == '')}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{bank.bankCode}" headerText="#{msg['FORM.TAB.CODE']}" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{bank.bankCode}" />                           
+                        </p:column>
+                        <p:column filterBy="#{bank.bankName}" headerText="#{msg['FORM.TAB.NAME']}" filterMatchMode="contains" > 
+                            <p:outputLabel value="#{bank.bankName}" />                            
+                        </p:column>   
+
+                        <p:column filterBy="#{bank.bankCountry}" headerText="#{msg['FORM.TAB.COUNTRY']}" filterMatchMode="contains" > 
+                            <p:outputLabel value="#{bank.bankCountry}" />                            
+                        </p:column>    
+
+                        <p:column styleClass="actions" headerText="#{msg['ACTIONS']}" exportable="false">   
+                            <p:commandLink process="@this" resetValues="true" id="rowInfo" rendered="#{permissionsManaged.validatePermissions('OPTION.BANKS', 'view')}" onclick="PF('dlg5').show();" update="viewForm" styleClass="Fleft" > 
+                                <i class="fal fa-eye Fs20"></i>
+                                <f:param  value="#{bank.bankId}" name="id"/> 
+                            </p:commandLink>
+                            <p:tooltip position="top" for="rowInfo" value="#{msg['VIEW.INFORMATION']}"/>
+                            <p:commandLink process="@this" resetValues="true" id="editCommand" rendered="#{permissionsManaged.validatePermissions('OPTION.BANKS', 'edit')}" onclick="PF('dlg3').show();" update="editForm" styleClass="Fleft">
+                                <i class="fal fa-edit Fs20"></i>       
+                                <f:param  value="#{bank.bankId}" name="id"/> 
+                            </p:commandLink>    
+                            <p:tooltip position="top" for="editCommand" value="#{msg['EDIT.VALUES']}"/>
+
+
+                            <p:commandLink process="@this" resetValues="true" id="deleteCommand"  onclick="PF('dlg4').show();" update="deleteForm" rendered="#{bank.delete and (permissionsManaged.validatePermissions('OPTION.BANKS', 'delete'))}"  styleClass="Fleft">                                    
+                                <i class="fal fa-trash-alt Fs20"></i>  
+                                <f:param  value="#{bank.bankId}" name="id"/> 
+                            </p:commandLink>     
+                            <p:tooltip position="top" for="deleteCommand" value="#{msg['BUTTON.DELETE']} #{msg['ROW']}"/>
+                        </p:column>
+                    </p:dataTable>  
+                    <div class="TexAlLeft">
+                        <c:if test="#{permissionsManaged.validatePermissions('OPTION.BANKS', 'create')}">
+
+                            <p:commandLink process="@this" resetValues="true" id="button-create-bottom" styleClass="Fleft" onclick="PF('dlg2').show();">                                    
+                                <i class="fal fa-plus-circle Fs30"></i>
+                            </p:commandLink>
+                            <p:tooltip position="top" for="button-create-bottom" value="#{msg['BUTTON.CREATE']}"/>
+                        </c:if>
+
+                        <p:link  id="button-dismiss-bottom" outcome="/company-panel" styleClass="Fleft">
+                            <i class="fal fa-reply-all  Fs30"></i>
+                        </p:link>
+
+                        <p:tooltip position="top" for="button-dismiss-bottom" value="#{msg['BUTTON.DISMISS']}"/>                        
+
+                    </div>
+                </div>
+            </h:form>
+            <br/>
+        </div>
+        <ui:include src="create.xhtml"></ui:include>  
+        <ui:include src="edit.xhtml"></ui:include> 
+        <ui:include src="delete.xhtml"></ui:include> 
+        <ui:include src="view.xhtml"></ui:include> 
+    </ui:define>
+</ui:composition>

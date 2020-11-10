@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <script type="text/javascript">
+        $(function () {
+            var ctx = document.getElementById("dashboard-chart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                            label: 'Sales',
+                            data: [12, 19, 3, 5, 2, 3, 9],
+                            borderColor: [
+                                '#7E57C2',
+                            ],
+                            borderWidth: 3,
+                            borderDash: [5, 5],
+                            fill: false,
+                            pointRadius: 3
+                        }, {
+                            label: 'Income',
+                            data: [1, 2, 5, 3, 12, 7, 15],
+                            backgroundColor: [
+                                'rgba(187,222,251,0.2)',
+                            ],
+                            borderColor: [
+                                '#42A5F5',
+                            ],
+                            borderWidth: 3,
+                            fill: true
+                        },
+                        {
+                            label: 'Expenses',
+                            data: [7, 12, 15, 5, 3, 13, 21],
+                            borderColor: [
+                                '#FFB300',
+                            ],
+                            borderWidth: 3,
+                            fill: false,
+                            pointRadius: [4, 6, 4, 12, 8, 0, 4]
+                        },
+                        {
+                            label: 'New Users',
+                            data: [3, 7, 2, 17, 15, 13, 19],
+                            borderColor: [
+                                '#66BB6A',
+                            ],
+                            borderWidth: 3,
+                            fill: false
+                        }]
+                },
+                options: {
+                    responsive: true,
+                    hover: {
+                        mode: 'index'
+                    },
+                    scales: {
+                        xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Month'
+                                }
+                            }],
+                        yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value'
+                                }
+                            }]
+                    }
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        .jqplot-target, .jqplot-axis {
+            color: #546E7A;
+        }
+    </style>
+
+    <!-- SUB TOPBAR START -->
+    <ui:define name="viewname">
+        <li>
+            <p:link outcome="/dashboard">Inicio</p:link>
+        </li>
+    </ui:define>
+    <!-- SUB TOPBAR END -->
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl life="10000" id="messages" showDetail="true" showSummary="false"/>     
+        </h:form>      
+
+        <!-- Left Column -->
+        <div class="layout-dashboard">
+            <div class="card card-w-title resolution-center ui-fluid">
+                <div class="content-body">
+                    <p:panelGrid columns="2" layout="grid" style="border:0px !important; background:none;" rendered="ui-grid-col-6,ui-grid-col-6">
+                        <c:if test="#{userLoginManaged.user.pdhUserActive}">
+                            <p:link outcome="dashboard">
+                                <div class="overview-box checkin">
+                                    <i class="overview-icon fal fa-users-cog"></i>
+                                    <span class="overview-title">Configuraciones</span>  
+                                </div>
+                            </p:link>
+                        </c:if>
+                    </p:panelGrid>
+                </div>
+            </div>
+        </div>         
+    </ui:define>
+</ui:composition>

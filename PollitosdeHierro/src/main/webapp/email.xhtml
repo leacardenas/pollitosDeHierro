@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="viewname">
+        <li> 
+            <p:link outcome="/dashboard"> #{msg['DASHBOARD']}</p:link><p:link outcome="/user-panel"><i class="fal fa-long-arrow-right"></i> #{msg['OPTION.DASHBOARD.USER.PANEL']}</p:link><p:link outcome="/suppliers/index"><i class="fal fa-long-arrow-right"></i> #{msg['SUPPLIERS']}</p:link>                                                                               
+        </li>
+    </ui:define>  
+
+    <ui:define name="content">
+        <div class="card card-w-title resolution-center ui-fluid">
+
+            <h:form id="form">
+
+                <p:tab title="email"> 
+
+                    <p:panelGrid columns="1" layout="grid" style="border:0px !important; background:none;" >
+                        <p:outputLabel for="to" value="Para"/>
+                        <p:inputTextarea id="to" value="#{emailManaged.emailAdrressTo}" required="true" requiredMessage="#{msg['SUPPLIER.FILES.NAME']} #{msg['REQUIRED.FIELD']}" maxlength="200"  style="width: 95%"/>
+                        <p:tooltip position="top" for="to" value="para"/>
+                        <h:inputHidden/>
+                        <p:outputLabel for="subject" value="subject "/>
+                        <p:inputTextarea id="subject" value="#{emailManaged.subject}" maxlength="200" rows="4" autoResize="false" style="width: 95%"/>
+                        <p:tooltip position="top" for="subject" value="#{msg['HELP.SUPPLIER.FILES.DESCRIPTION']}"/>
+                        <p:outputLabel for="body" value="body"/>
+                        <p:inputTextarea id="body" value="#{emailManaged.body}" maxlength="200" rows="4" autoResize="false" style="width: 95%"/>
+                        <p:tooltip position="top" for="body" value="#{msg['HELP.SUPPLIER.FILES.DESCRIPTION']}"/>
+                        <h:inputHidden/>
+
+                        <p:fileUpload label="#{none}" id="createFile" fileUploadListener="#{emailManaged.upload}" auto="true" immediate="true"   mode="advanced"/> 
+                    </p:panelGrid>
+                </p:tab>
+
+                <p:commandButton value="enviar" styleClass="GreenButton" action="#{emailManaged.sendEmail()}"  
+                                 update="form" /> 
+                <p:button value="#{msg['BUTTON.CANCEL']}" styleClass="RedButton" outcome="index"  />
+
+            </h:form>
+            <br/>
+        </div>
+    </ui:define>
+</ui:composition>
