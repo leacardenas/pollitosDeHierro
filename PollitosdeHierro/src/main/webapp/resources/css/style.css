@@ -1,0 +1,24 @@
+/* 
+    Created on : Jun 06, 2015, 10:46:02 AM
+    Author     : Melanie
+*/
+
+.ui-messages-error-detail {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    max-width: 200px;
+    margin: 0px auto;
+}
+
+.ui-panelgrid tbody tr td{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    max-width: 200px;
+    margin: 0px auto;
+}
+
+/*.ui-separator{
+    border: none!important;
+}*/

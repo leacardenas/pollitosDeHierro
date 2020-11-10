@@ -1,0 +1,509 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/12/2018, 11:12:10 AM
+    Author     : leaca
+*/
+
+/* Font Small layout menu, viewname Start*/
+body .font-small .layout-menu-container a,body .font-small .layout-main .route-bar *,.topbar-item-name{
+    font-size: 10px!important;
+}
+/*Font Small layout menu, viewname End*/
+
+/* Font Medium layout menu, viewname Start*/
+body .font-medium .layout-menu-container a,body .font-medium .layout-main .route-bar *,.topbar-item-name{
+    font-size: 15px!important;
+}
+/*Font Medium layout menu, viewname End*/
+
+/* Font Large layout menu, viewname Start*/
+body .font-large .layout-menu-container a,body .font-large .layout-main .route-bar *,.topbar-item-name{
+    font-size: 20px!important;
+}
+/*Font Large layout menu, viewname End*/
+
+
+/* Font Small Content Start*/
+body .font-small-content * a i,body .font-small-content .panelIcon i, body .font-small-content .ui-datatable .ui-datatable-data > tr .ui-row-editor a span{
+    font-size: 25px!important;
+    margin: 1px;
+}
+
+body .font-small-content * span i{
+    font-size: 25px!important;
+    margin: 1px;
+}
+
+body .font-small-content * td a i,body .font-small-content td .panelIcon i, body .font-small-content .ui-datatable .ui-datatable-data > tr .ui-row-editor a span{
+    font-size: 15px!important;
+}
+
+body .font-small-content * td span i{
+    font-size: 15px!important;
+}
+
+body .font-small-content h2{
+    font-size: 25px!important;
+    margin-top: 5px;    
+    margin-bottom: 5px;
+}
+body .font-small-content .ui-widget, body .font-small-content .ui-widget .ui-widget,body .font-small-content .ui-inputfield,body .font-small-content,body .font-small-content .ui-datepicker .ui-datepicker-calendar{
+    font-size: 10px!important;
+}
+/*Font Small Content End*/
+
+/* Font Medium Content Start*/
+body .font-medium-content * a i{
+    font-size: 30px!important;
+    margin: 1px;
+}
+body .font-medium-content * span i{
+    font-size: 30px!important;
+    margin: 1px;
+}
+
+body .font-medium-content * td a i{
+    font-size: 20px!important;
+}
+
+body .font-medium-content * td span i{
+    font-size: 20px!important;
+}
+
+body .font-medium-content h2{
+    font-size: 30px!important;
+    margin-top: 5px;    
+    margin-bottom: 5px;
+}
+body .font-medium-content .ui-widget, body .font-medium-content .ui-widget .ui-widget,body .font-medium-content .ui-inputfield,body .font-medium-content,body .font-medium-content .ui-datepicker .ui-datepicker-calendar{
+    font-size: 15px!important;
+}
+/*Font Medium Content End*/
+
+/* Font Large Content Start*/
+body .font-large-content * a i{
+    font-size: 35px!important;
+    margin: 1px;
+}
+
+body .font-large-content * span i{
+    font-size: 35px!important;
+    margin: 1px;
+}
+
+body .font-large-content * td a i{
+    font-size: 25px!important;
+}
+
+body .font-large-content * td span i{
+    font-size: 25px!important;
+}
+
+body .font-large-content h2{
+    font-size: 35px!important;
+    margin-top: 5px;    
+    margin-bottom: 5px;
+}
+body .font-large-content .ui-widget, body .font-large-content .ui-widget .ui-widget,body .font-large-content .ui-inputfield,body .font-large-content,body .font-large-content .ui-datepicker .ui-datepicker-calendar{
+    font-size: 20px!important;
+}
+/*Font Large Content End*/
+
+/*body .layout-content a i{
+    color: #0081d0;
+}*/
+
+body .ui-state-highlight a i{
+    color: #ffffff;
+}
+
+.user-profile img{
+    border-radius: 50%;
+}
+
+.user-profile img:hover{
+    border-radius: 50%;
+    transform: scale(1.05);
+}
+
+.content-footer{
+    width: auto;
+    margin: auto;
+    text-align: center;
+}
+
+.content-body{
+    width: 90%;
+    margin: auto;
+}
+
+.TexAlCenter{ 
+    text-align:center;
+}
+.TexAlLeft{ 
+    text-align:left;
+}
+
+.TexAlRight, .TexAlRight input{ 
+    text-align:right !important;
+}
+
+.Fleft{
+    float: left;
+    margin: 0px;
+}
+
+.ui-column-title{
+    width: 40%;
+    margin-right: 5px!important;
+}
+
+.language span{
+    display: none;
+}
+
+active-topmenuitem ul{
+    width: auto!important;
+}
+
+.language,.language li{
+    min-width: 50px!important;
+}
+
+.language li a{
+    padding: 0px!important;    
+}
+
+.layout-wrapper .layout-topbar .topbar-menu > li > .language:before, .layout-wrapper .layout-topbar .topbar-menu > li > .language:after{
+    left: 50px!important;
+}
+
+.layout-wrapper .layout-topbar .topbar-menu > li > ul a img {
+    width: 32px!important;
+    height: 32px!important;
+    margin-left: 8px;
+}
+
+.topbar-icon{
+    font-size: 30px!important;
+}
+/*
+.Fs14{font-size:13px !important; margin: 2px;} 
+.Fs15{font-size:14px !important; margin: 2px;} 
+.Fs16{font-size:15px !important; margin: 2px;} 
+.Fs17{font-size:16px !important; margin: 2px;} 
+.Fs18{font-size:16px !important; margin: 2px;} 
+.Fs19{font-size:16px !important; margin: 2px;} 
+.Fs20{font-size:18px !important; margin: 2px;} 
+.Fs21{font-size:18px !important; margin: 2px;} 
+.Fs22{font-size:20px !important; margin: 2px;} 
+.Fs23{font-size:20px !important; margin: 2px;} 
+.Fs24{font-size:22px !important; margin: 2px;} 
+.Fs25{font-size:22px !important; margin: 2px;} 
+.Fs26{font-size:24px !important; margin: 2px;} 
+.Fs27{font-size:24px !important; margin: 2px;} 
+.Fs28{font-size:26px !important; margin: 2px;} 
+.Fs29{font-size:26px !important; margin: 2px;} 
+.Fs30{font-size:28px !important; margin: 2px;}
+.Fs35{font-size:35px !important; margin: 2px;}
+.Fs40{font-size:30px !important; margin: 2px;}
+.Fs50{font-size:35px !important; margin: 2px;}
+.Fs60{font-size:40px !important; margin: 2px;}
+.Fs100{font-size:60px !important; margin: 2px;}
+.Fs130{font-size:70px !important; margin: 2px;}
+*/
+.topValue{
+    font-size: 22px!important;
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+body .ui-fileupload .ui-fileupload-buttonbar {
+    border: none;
+    background-color: #ffffff;
+}
+
+body .ui-fileupload .ui-fileupload-content {
+    border: none;
+    background-color: #ffffff;
+}
+
+.ui-panelgrid {
+    border-collapse: collapse;
+}
+
+.Gray {
+    color: #90A4AE;
+}
+
+.layout-dashboard .overview-box .overview-icon {
+    font-size: 90px!important;
+    float: none; 
+    /* color:#0069cc!important;*/
+    -webkit-text-stroke: 3px white;
+}
+
+.layout-dashboard .overview-box.checkin{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color:white;
+}
+
+.layout-dashboard .overview-box.checkin:hover .overview-icon{
+    -webkit-text-stroke: 2px #e6f3ff;
+}
+
+.layout-dashboard .overview-box.checkin .overview-subinfo{
+    color: #0069cc;
+}
+
+.layout-dashboard .overview-box .overview-title {
+    display: block;
+    font-size: 25px;
+    /*color:  #0069cc;*/
+}
+
+.ui-selectonemenu{
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+.ui-selectonemenu-panel{
+    min-width: 20%!important;
+    max-width: 90%!important;
+}
+
+.ui-selectonemenu-filter-container{
+    min-width: 100%!important;
+    max-width: 100%!important;
+}
+
+.ui-inputtext{
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+
+.ui-inputtextarea{
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+.ui-spinner{
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+.ui-spinner-input{
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+body .ui-datatable .ui-datatable-data > tr > td{
+    padding: 0.5em 0.5em!important;
+}
+
+body .panelGridPadding .ui-panelgrid-content .ui-grid-row > .ui-panelgrid-cell{
+    padding: 0px!important;
+}
+
+body .panelGridPadding5px .ui-panelgrid-content .ui-grid-row > .ui-panelgrid-cell{
+    padding: 5px!important;
+}
+
+.calculator .ui-panelgrid-cell.ui-widget-header{
+    border: 1px solid #e0e0e0!important;
+    background-color: white!important;
+}
+
+.layout-wrapper .route-bar .route-bar-breadcrumb li a:hover{
+    font-size: 14.2px;
+    color: blue;
+}
+
+.layout-wrapper .layout-menu-container .layout-menu-logo a{
+    text-align: center;
+    padding-left: 0px;
+}
+
+.layout-wrapper .layout-menu-container .layout-menu-logo a img{
+    transform: scale(1.2);
+}
+
+.layout-wrapper .layout-topbar .layout-topbar-logo img{
+    padding-left: 10px;
+    transform: scale(1.2);
+}
+
+body tr td a{
+    color: blue;
+} 
+
+body tr td a:hover{
+    transform: scale(1.1);   
+} 
+
+@media (max-width: 640px) {
+
+    .ui-datatable table {
+        table-layout: initial;
+    }
+    .Fleft{
+        float: right;
+        margin: 0px 5px 0px 5px;
+    }    
+
+    .actions span{
+        display: none!important;
+    }    
+
+    .layout-dashboard .overview-box .overview-icon {
+        font-size: 60px!important;
+        -webkit-text-stroke: 1px white!important;
+    }
+
+    .layout-dashboard .overview-box.checkin:hover .overview-icon{
+        -webkit-text-stroke: 0px #e6f3ff!important;
+    }
+
+    .ui-datatable-reflow .ui-datatable-data td[role="gridcell"]:not(.ui-helper-hidden){
+        width: 100%!important;
+    }   
+
+    .topValue{
+        float: left;
+    }
+
+    .language span{
+        display: initial;
+    }
+
+    .ui-datatable-reflow .ui-datatable-data td[role="gridcell"]:not(.ui-helper-hidden) {
+        display: flex;
+    }
+
+    td .ui-column-title{
+        font-weight: bold;
+        width: 20%;
+    }
+
+    td .ui-outputlabel{
+        width: auto;
+    }
+    .ui-datatable-summaryrow .displayNone{
+        display: none;
+    }
+
+    .chartjsPanel{
+        width: 500px!important
+    }
+}
+
+
+@media (min-width: 640px) {
+    .ui-datatable-summaryrow  .ui-column-title{
+        display: none;
+    }
+    .quotation_totals {
+        width: 60%;
+    }
+    .rowExpansionTable {
+        width: 50%; 
+        float: left;
+        padding: 5px;
+    }
+    
+    .rowExpansionTableQWC {
+        width: 100%; 
+        display: inline-block;
+        padding: 20px;
+    }
+
+
+}
+@media (min-width: 900px) {
+    .topValues{        
+        display: initial!important;
+    }
+    .layoutHorizontal{
+        height: auto!important;
+    }
+
+    .layout-menu-slim img {
+        margin-left: 10px;
+    }
+}
+
+@media (max-height: 899px) and (min-width: 897px) {
+    .layout-menu-slim i {
+        font-size: 20px!important
+    }
+
+    .layout-menu-slim .layout-menu-wrapper a {
+        padding-top: 10px!important;
+        padding-bottom: 10px!important;
+    }
+}
+
+.ui-tooltip-arrow{
+    display: none;
+}
+
+.ui-tooltip{
+    max-width: 300px;
+}
+
+/*Calendar solution in dialog*/
+body .ui-inputfield{
+    padding: 0.500em;
+}
+
+body .ui-progressbar .ui-progressbar-label {
+    display: initial!important
+}
+
+body .layout-menu ul{
+    z-index: 1005;
+}
+
+.displayTableRow {
+    display: none;    
+}
+
+.without-selectall .ui-selectcheckboxmenu-header .ui-chkbox {
+    display: none; 
+}
+
+#dialogAjaxStatus .ui-dialog-content{
+    overflow: hidden;
+}
+
+.rowHeader {
+    font-weight: normal; 
+    color: #ffffff;
+}
+
+.boldLabel {
+    font-weight: bold;
+}
+
+.valid-email {
+    background: #ffffff;
+    background-size: 300px;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icons-booking-engine{
+    font-weight: 400 !important; 
+    font-size: 60px  !important;
+}
+
+.chartjsPanel .card{
+    box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);
+}

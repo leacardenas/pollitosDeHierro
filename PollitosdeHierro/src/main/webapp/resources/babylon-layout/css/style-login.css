@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/12/2018, 02:58:35 PM
+    Author     : leaca
+*/
+@media (max-width: 767px) {
+    .login-body .login-content {
+        background-color: white;
+    }    
+    .login-body .login-content img{
+        display: initial!important;
+        margin: 0px;
+    }  
+
+    .exception-body .exception-content img{
+        display: initial!important;
+        margin: 0px;
+    }
+
+    .exception-body.error {
+        background: #ffffff;
+    }    
+
+}
+
+@media (max-width: 640px) {
+    .exception-content{
+        padding-left: 0px!important;
+    }
+}
+
+.login-body .login-content img{
+}  
+
+.exception-body .exception-content img{
+    display: none;
+}   
+
+.login-body .login-content {
+    padding-top: 10%;
+}
+
+.exception-body .exception-content img{
+    margin-bottom: 0px;
+}
+
+.exception-body .exception-content{
+    padding-top: 0px;
+}
+
+@media (min-width: 767px) and (max-width: 970px){
+    .login-body {
+        background: #ffffff;
+        background-size: 50%;
+        background-position-x: right;
+        background-repeat: no-repeat;
+    }
+    .exception-body.error {
+        background: url("#{resource['babylon-layout:images/pages/dog.jpeg']}");
+        background-position-y: -20px;
+        background-size: 50%;
+        background-position-x: right;
+        background-repeat: no-repeat;
+    }
+    .exception-body .exception-panel{
+        background-color: transparent;
+    }
+
+    .StackTrace{
+        margin-top: 100px;
+    }
+}
+
+@media (min-width: 970px){
+    .login-body {
+        background: #ffffff;
+        background-size: 60%;
+        background-position-x: right;
+        background-repeat: no-repeat;
+    }
+
+    .exception-body .exception-panel{
+        background-color: transparent;
+    }
+
+    .StackTrace{
+        margin-top: 100px;
+    }
+}
+@media (min-width: 970px) and  (max-width: 1261px){
+    .exception-body.error {
+        background: url("#{resource['babylon-layout:images/pages/dog.jpeg']}");
+        background-position-y: -20px;
+        background-size: 60%;
+        background-position-x: right;
+        background-repeat: no-repeat;
+    }
+    .exception-body .exception-panel{
+        background-color: transparent;
+    }
+}
+
+
+@media (min-width: 1262px){
+    .exception-body.error {
+        background: url("#{resource['babylon-layout:images/pages/dog.jpeg']}");
+        background-position-y: -20px;
+        background-size: 1000px;
+        background-position-x: right;
+        background-repeat: no-repeat;
+    }
+    .exception-body .exception-panel{
+        background-color: transparent;
+    }
+}
+
+body .ui-panelgrid .ui-panelgrid-cell {
+    background: transparent;
+}
+
+.login-content{
+    overflow: auto;
+}
