@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import java.util.List;
+import java.util.TimeZone;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -53,6 +54,8 @@ public class PdhUserManaged implements Serializable {
     private UserLoginManaged userLoginManaged;
 
     private List<PdhUser> pdhUsersList;
+    
+    private String[] timeZoneIDs;
 
     public PdhUserManaged() {
         /**
@@ -63,6 +66,7 @@ public class PdhUserManaged implements Serializable {
     @PostConstruct
     public void init() {
         pdhUser = new PdhUser();
+        timeZoneIDs = TimeZone.getAvailableIDs();
     }
 
     public void create() {
@@ -189,5 +193,13 @@ public class PdhUserManaged implements Serializable {
 
     public Date getCurrentDate() {
         return userLoginManaged.getCurrentDate();
+    }
+
+    public String[] getTimeZoneIDs() {
+        return timeZoneIDs;
+    }
+
+    public void setTimeZoneIDs(String[] timeZoneIDs) {
+        this.timeZoneIDs = timeZoneIDs;
     }
 }

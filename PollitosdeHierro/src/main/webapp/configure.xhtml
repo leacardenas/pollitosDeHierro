@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+                    
+    <ui:define name="viewname">
+        <li>
+            <p:link outcome="/dashboard">Inicio</p:link><i class="fal fa-long-arrow-right"></i>Configuraciones
+        </li>
+    </ui:define>
+    <ui:define name="content">
+        <h:form>
+            <p:growl life="10000" id="messages" showDetail="true" showSummary="false"/>     
+        </h:form>      
+            
+        <div class="layout-dashboard">
+            <div class="card card-w-title resolution-center ui-fluid">
+                <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-6,ui-grid-col-6">
+                    <c:if test="#{userLoginManaged.user.pdhUserIsIt or userLoginManaged.user.pdhUserIsAdmin}">
+                        <p:link outcome="users/index">
+                            <div class="overview-box checkin">
+                                <i class="overview-icon fas fa-user"></i>
+                                <span class="overview-title">Usuarios</span>  
+                            </div>
+                        </p:link>
+                    </c:if>
+                </p:panelGrid>
+            </div>
+        </div>         
+    </ui:define>
+</ui:composition>

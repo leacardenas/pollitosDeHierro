@@ -49,6 +49,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PdhUser.findByPdhUserDistrict", query = "SELECT p FROM PdhUser p WHERE p.pdhUserDistrict = :pdhUserDistrict")})
 public class PdhUser implements Serializable {
 
+    @Column(name = "pdh_user_is_it")
+    private Boolean pdhUserIsIt;
+    @Column(name = "pdh_user_is_admin")
+    private Boolean pdhUserIsAdmin;
+
     @Size(max = 45)
     @Column(name = "pdh_user_timezone")
     private String pdhUserTimezone;
@@ -84,11 +89,11 @@ public class PdhUser implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date pdhUserUpdatedDate;
     @Column(name = "pdh_user_is_sponsor")
-    private Boolean pdhUserIsSponsor;
+    private Boolean pdhUserIsSponsor = Boolean.FALSE;
     @Column(name = "pdh_user_is_headquarter_manager")
-    private Boolean pdhUserIsHeadquarterManager;
+    private Boolean pdhUserIsHeadquarterManager = Boolean.FALSE;
     @Column(name = "pdh_user_is_voluntary")
-    private Boolean pdhUserIsVoluntary;
+    private Boolean pdhUserIsVoluntary = Boolean.FALSE;
     @Lob
     @Size(max = 65535)
     @Column(name = "pdh_user_identification_number")
@@ -483,6 +488,22 @@ public class PdhUser implements Serializable {
 
     public void setPdhUserTimezone(String pdhUserTimezone) {
         this.pdhUserTimezone = pdhUserTimezone;
+    }
+
+    public Boolean getPdhUserIsIt() {
+        return pdhUserIsIt;
+    }
+
+    public void setPdhUserIsIt(Boolean pdhUserIsIt) {
+        this.pdhUserIsIt = pdhUserIsIt;
+    }
+
+    public Boolean getPdhUserIsAdmin() {
+        return pdhUserIsAdmin;
+    }
+
+    public void setPdhUserIsAdmin(Boolean pdhUserIsAdmin) {
+        this.pdhUserIsAdmin = pdhUserIsAdmin;
     }
     
 }
