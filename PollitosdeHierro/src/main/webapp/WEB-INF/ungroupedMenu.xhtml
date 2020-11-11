@@ -1,10 +1,13 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"  xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pb="http://primefaces.org/babylon"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
+    
     <pb:menu>
-        <p:submenu>
-           
+        <p:submenu  label="Configuraciones" icon="far fa-cogs" >
+            <p:menuitem  value="Usuarios" icon="fal fa-desktop" outcome="configure" />     
+        </p:submenu>
+            
+        <p:menuitem  value="Niños" icon="far fa-child" outcome="kids/index" />     
     </pb:menu>
-
+    
 </ui:composition>

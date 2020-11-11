@@ -9,7 +9,7 @@
                 <h:outputLabel value="¿Esta seguro que quiere borrar el dato?"/>		                       
                 <br/><br/>
                 <p:commandLink id="button-delete" styleClass="Fleft" action="#{pdhKidManaged.delete()}" update="deleteForm" oncomplete="if (!args.validationFailed){PF('kidsTable').filter();}">                                    
-                    <i class="fas fa-trash Fs30"></i>
+                    <i class="far fa-trash Fs30"></i>
                 </p:commandLink>
                 <p:commandLink process="@this" resetValues="true" id="button-dismiss" onclick="PF('delete-dlg').hide()();" styleClass="Fleft">
                     <i class="fal fa-reply-all  Fs30"></i>

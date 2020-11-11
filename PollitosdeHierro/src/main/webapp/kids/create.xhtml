@@ -17,10 +17,10 @@
         <div class="card card-w-title resolution-center ui-fluid">                                           
             <h:form id="createForm">
                 <p:commandLink id="button-save" update="createForm" oncomplete="if (!args.validationFailed){PF('kidsTable').filter();}" styleClass="Fleft" action="#{pdhKidManaged.create()}">                                    
-                    <i class="fas fa-plus-circle Fs30"></i>
+                    <i class="far fa-save Fs30"></i>
                 </p:commandLink>
                 <p:link id="button-dismiss" styleClass="Fleft" outcome="/kids/index">                                    
-                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                    <i class="far fa-arrow-circle-left Fs30"></i>
                 </p:link>
                 <p:tooltip position="top" for="button-save" value="Guardar"/>
                 <p:tooltip position="top" for="button-dismiss" value="Cancelar"/> 
@@ -148,10 +148,10 @@
                 <br/>
                     
                 <p:commandLink id="button-save-bottom" update="createForm" oncomplete="if (!args.validationFailed){PF('kidsTable').filter();}" styleClass="Fleft" action="#{pdhKidManaged.create()}">                                    
-                    <i class="fas fa-plus-circle Fs30"></i>
+                    <i class="far fa-save Fs30"></i>
                 </p:commandLink>
                 <p:link id="button-dismiss-bottom" styleClass="Fleft" outcome="/kids/index">                                    
-                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                    <i class="far fa-arrow-circle-left Fs30"></i>
                 </p:link>
                 <p:tooltip position="top" for="button-save-bottom" value="Guardar"/>
                 <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>  

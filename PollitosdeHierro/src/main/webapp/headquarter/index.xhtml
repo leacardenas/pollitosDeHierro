@@ -19,12 +19,12 @@
                 <div class="TexAlCenter">
                     <div class="TexAlLeft">
                         <p:link id="button-dismiss" outcome="/configure" styleClass="Fleft">
-                            <i class="fas fa-arrow-circle-left Fs30"></i>
+                            <i class="far fa-arrow-circle-left Fs30"></i>
                         </p:link>
                         <p:tooltip position="top" for="button-dismiss" value="Volver a la pantalla anterior"/>     
                             
                         <p:commandLink id="button-create" styleClass="Fleft" onclick="PF('create-dlg').show();">                                    
-                            <i class="fas fa-plus-circle Fs30"></i>
+                            <i class="far fa-plus-circle Fs30"></i>
                         </p:commandLink>
                         <p:tooltip position="top" for="button-create" value="crear sede nueva"/>
                     </div>
@@ -47,7 +47,7 @@
                             
                         <p:column style="width:20px" exportable="false"> 
                             <p:commandLink rendered="#{(hq.pdhHeadquarterCreatedBy.pdhUserUsername!= null and hq.pdhHeadquarterCreatedBy.pdhUserUsername != '') or !(hq.pdhHeadquarterUpdatedBy.pdhUserUsername == null or hq.pdhHeadquarterUpdatedBy.pdhUserUsername == '')}" process="@this" id="updateCreatedBy" styleClass="Fleft">                                    
-                                <i class="fas fa-id-card-alt Fs20"></i>
+                                <i class="far fa-id-card-alt Fs20"></i>
                             </p:commandLink>
                             <p:tooltip position="top" for="updateCreatedBy" value="Creado por: #{hq.pdhHeadquarterCreatedBy.pdhUserUsername} 
                                        #{userLoginManaged.formatDateWithHour(hq.pdhHeadquarterCreatedDate)}" 
@@ -76,19 +76,19 @@
                         
                         <p:column styleClass="actions" headerText="Opciones" exportable="false">   
                             <p:commandLink process="@this" resetValues="true" id="rowInfo" onclick="PF('view-dlg').show();" update="viewForm" styleClass="Fleft" > 
-                                <i class="fas fa-eye Fs20"></i>
+                                <i class="far fa-eye Fs20"></i>
                                 <f:param  value="#{hq.pdhHeadquarterId}" name="id"/> 
                             </p:commandLink>
                             <p:tooltip position="top" for="rowInfo" value="Ver información"/>
                             
                             <p:commandLink process="@this" resetValues="true" id="editCommand" onclick="PF('edit-dlg').show();" update="editForm" styleClass="Fleft">
-                                <i class="fas fa-pen Fs20"></i>    
+                                <i class="far fa-pen Fs20"></i>    
                                 <f:param  value="#{hq.pdhHeadquarterId}" name="id"/> 
                             </p:commandLink>    
                             <p:tooltip position="top" for="editCommand" value="Editar información"/>
                                 
                             <p:commandLink process="@this" resetValues="true" id="deleteCommand" onclick="PF('delete-dlg').show();" update="deleteForm" styleClass="Fleft">                                    
-                                <i class="fas fa-trash Fs20"></i>  
+                                <i class="far fa-trash Fs20"></i>  
                                 <f:param  value="#{hq.pdhHeadquarterId}" name="id"/> 
                             </p:commandLink>     
                             <p:tooltip position="top" for="deleteCommand" value="Borrar información"/>

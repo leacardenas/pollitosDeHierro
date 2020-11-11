@@ -11,34 +11,150 @@
             <p:link outcome="/dashboard">Inicio</p:link><i class="fal fa-long-arrow-right"></i><i class="fal fa-long-arrow-right"></i>Niños<i class="fal fa-long-arrow-right"></i>Editar
         </li>
     </ui:define> 
-    
+        
     <ui:define name="content">
-        <div class="card card-w-title resolution-center ui-fluid">
+        
+        <div class="card card-w-title resolution-center ui-fluid">                                           
             <h:form id="editForm">
-                <p:commandLink id="button-save" update="editForm" oncomplete="if (!args.validationFailed){PF('kidsTable').filter();}" styleClass="Fleft" action="#{pdhKidManaged.edit()}">                                    
-                    <i class="fas fa-plus-circle Fs30"></i>
+                <p:commandLink id="button-save" update="editForm" styleClass="Fleft" action="#{pdhKidManaged.edit()}">                                    
+                    <i class="far fa-save Fs30"></i>
                 </p:commandLink>
                 <p:link id="button-dismiss" styleClass="Fleft" outcome="/kids/index">                                    
-                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                    <i class="far fa-arrow-circle-left Fs30"></i>
                 </p:link>
                 <p:tooltip position="top" for="button-save" value="Guardar"/>
                 <p:tooltip position="top" for="button-dismiss" value="Cancelar"/> 
+                <br/>
+                <br/>
                     
-                <p:panelGrid columns="5" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
-                    <p:panelGrid>
-                        <p:outputLabel for="code" value="Código"/>
-                        <p:inputText id="code" value="#{pdhKidManaged.pdhKid.hashCode}" required="true" requiredMessage="El código es un campo requerido"/>
+                <div class="TexAlCenter">
+                    <h2>Editar niño: #{pdhKidManaged.requestedPdhKidById.pdhKidName} #{pdhKidManaged.requestedPdhKidById.pdhKidSurname}</h2>
+                </div>
+                    
+                <p:tabView>
+                    <p:tab title="Información general">
+                        <p:panelGrid columns="4" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
+                            <p:panelGrid>
+                                <p:outputLabel for="code" value="Código"/>
+                                <p:inputText id="code" value="#{pdhKidManaged.requestedPdhKidById.pdhKidCode}" required="true" requiredMessage="Código es un campo requerido"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="name" value="Nombre"/>
+                                <p:inputText id="name" value="#{pdhKidManaged.requestedPdhKidById.pdhKidName}" required="true" requiredMessage="Nombre es campo requerido"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="surname" value="Apellido"/>
+                                <p:inputText id="surname" value="#{pdhKidManaged.requestedPdhKidById.pdhKidSurname}" required="true" requiredMessage="Apellido campo requerido"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="age" value="Edad"/>
+                                <p:spinner id="age" value="#{pdhKidManaged.requestedPdhKidById.pdhKidAge}" required="true" requiredMessage="Edad campo requerido"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="birthday" value="Fecha de nacimiento"/>
+                                <p:calendar id="birthday" value="#{pdhKidManaged.requestedPdhKidById.pdhKidBirthDay}" required="true" requiredMessage="Fecha de nacimiento campo requerido" 
+                                            maxdate="#{userLoginManaged.currentDate}" pattern="dd-MMM-yyyy"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="siblings" value="Hermanos"/>
+                                <p:spinner id="siblings" value="#{pdhKidManaged.requestedPdhKidById.pdhKidNumberOfSiblings}" required="true" requiredMessage="Hermanos es campo requerido"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="peopleInHouse" value="Numero de personas en la casa"/>
+                                <p:spinner id="peopleInHouse" value="#{pdhKidManaged.requestedPdhKidById.pdhKidNumberOfPeopleLivingInHouse}"/>
+                            </p:panelGrid>
+                            
+                             <p:panelGrid>
+                                <p:outputLabel for="lastBasket" value="Ultima canasta recibida"/>
+                                <p:calendar disabled="true" id="lastBasket" value="#{pdhKidManaged.requestedPdhKidById.pdhKidLastBasketReceived}" 
+                                            maxdate="#{userLoginManaged.currentDate}" pattern="dd-MMM-yyyy"/>
+                            </p:panelGrid>
+                        </p:panelGrid>
+                    </p:tab>
+                        
+                    <p:tab title="Diagnostico">
+                        <p:panelGrid columns="4" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
+                            <p:panelGrid>
+                                <p:outputLabel for="diagnose" value="Diagnóstico"/>
+                                <p:inputTextarea id="diagnose" value="#{pdhKidManaged.requestedPdhKidById.pdhKidDiagnose}" required="true" requiredMessage="Diagnóstico es un campo requerido" rows="2" autoResize="false"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="currentDiagnose" value="Diagnóstico Actual"/>
+                                <p:inputTextarea id="currentDiagnose" value="#{pdhKidManaged.requestedPdhKidById.pdhKidCurrentDiagnose}" required="true" requiredMessage="Diagnóstico actual es un campo requerido" rows="2" autoResize="false"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="setback" value="Recaída"/>
+                                <p:selectBooleanButton onLabel="Sí" offLabel="No" id="setback" value="#{pdhKidManaged.requestedPdhKidById.pdhKidSetback}"/>
+                            </p:panelGrid>
+                                
+                            <p:panelGrid>
+                                <p:outputLabel for="epicrisis" value="Epicrisis"/>
+                                <p:inputTextarea id="epicrisis" value="#{pdhKidManaged.requestedPdhKidById.pdhKidAttachedEpicrisis}" rows="2" autoResize="false"/>
+                            </p:panelGrid>
+                        </p:panelGrid>
+                    </p:tab>
+                        
+                    <p:tab title="Tallas">
+                        <p:panelGrid columns="4" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
+                            <p:panelGrid>
+                                <p:outputLabel for="tshirt" value="Tamaño de camiseta"/>
+                                <p:inputText id="tshirt" value="#{pdhKidManaged.requestedPdhKidById.pdhKidTshirtSize}" required="true" requiredMessage="campo requerido"/>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:outputLabel for="pants" value="Tamaño de pantalones"/>
+                                <p:inputText id="pants" value="#{pdhKidManaged.requestedPdhKidById.pdhKidPantsSize}" required="true" requiredMessage="campo requerido"/>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:outputLabel for="shoes" value="Tamaño de zapatos"/>
+                                <p:inputText id="shoes" value="#{pdhKidManaged.requestedPdhKidById.pdhKidFootwareSize}" required="true" requiredMessage="campo requerido"/>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:outputLabel for="diaper" value="Tamaño de pañales"/>
+                                <p:inputText id="diaper" value="#{pdhKidManaged.requestedPdhKidById.pdhKidDiaperSize}"/>
+                            </p:panelGrid> 
+                        </p:panelGrid>
+                    </p:tab>
+                        
+                    <p:panelGrid id="tooltipPanel">
+                        <p:tooltip position="top" for="code" value="¿Cuál es el código de referencia de este niño(a)?"/>
+                        <p:tooltip position="top" for="name" value="Nombre del niño(a)"/>
+                        <p:tooltip position="top" for="surname" value="Apellido del niño(a)" />
+                        <p:tooltip position="top" for="age" value="Edad del niño(a)" />
+                        <p:tooltip position="top" for="siblings" value="Hermanos y hermanas del niño(a)" />
+                        <p:tooltip position="top" for="diagnose" value="Diagnóstico del niño(a)" />
+                        <p:tooltip position="top" for="currentDiagnose" value="Diagnóstico actual del niño(a)" />
+                        <p:tooltip position="top" for="epicrisis" value="Epicrisis del niño(a)"/>
+                        <p:tooltip position="top" for="tshirt" value="Tamaño de camiseta del niño(a)" />
+                        <p:tooltip position="top" for="pants" value="Tamaño de pantalones del niño(a)" />
+                        <p:tooltip position="top" for="shoes" value="Tamaño de zapatos del niño(a)" />
+                        <p:tooltip position="top" for="diaper" value="Tamaño de pañales del niño(a)"/>
+                        <p:tooltip position="top" for="lastBasket" value="Última canasta recibida del niño(a)"/>
+                        <p:tooltip position="top" for="peopleInHouse" value="Número de personas en la casa del niño(a)"/>
+                        <p:tooltip position="top" for="setback" value="¿El niño(a) presenta recaídas?"/>
                     </p:panelGrid>
-                </p:panelGrid>
-                <p:tooltip position="top" for="code" value="¿Cuál es el código de referencia de este niño?"/>
+                </p:tabView>
                     
-                <p:commandLink id="button-save-bottom" update="editForm" oncomplete="if (!args.validationFailed){PF('kidsTable').filter();}" styleClass="Fleft" action="#{pdhKidManaged.edit()}">                                    
-                    <i class="fas fa-plus-circle Fs30"></i>
+                <br/>
+                    
+                <p:commandLink id="button-save-bottom" update="editForm" styleClass="Fleft" action="#{pdhKidManaged.edit()}">                                    
+                    <i class="far fa-save Fs30"></i>
                 </p:commandLink>
                 <p:link id="button-dismiss-bottom" styleClass="Fleft" outcome="/kids/index">                                    
-                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                    <i class="far fa-arrow-circle-left Fs30"></i>
                 </p:link>
-                <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>                     
+                <p:tooltip position="top" for="button-save-bottom" value="Guardar"/>
+                <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>  
             </h:form>
             <br/>
         </div>

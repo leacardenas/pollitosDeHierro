@@ -1,8 +1,19 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"  xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pb="http://primefaces.org/babylon"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
+                    
     <pb:menu>
-      
+        <p:submenu label="Pollitos de Hierro" icon="far fa-home" >
+            <p:menuitem  value="Inicio" icon="far fa-home" outcome="/headquarter/index" />     
+        </p:submenu>
+        <p:submenu label="Configuraciones" icon="far fa-cogs" >
+            <p:menuitem  value="Usuarios" icon="fal far fa-user" outcome="/users/index" />     
+            <p:menuitem  value="Localizaciones" icon="far fa-location-arrow" outcome="/locations/index" />     
+            <p:menuitem  value="Sedes" icon="fal far fa-building" outcome="/headquarter/index" />     
+        </p:submenu>
+        
+        <p:submenu label="Niños" icon="far fa-cogs" >
+            <p:menuitem  value="Niños" icon="far fa-child" outcome="/kids/index" />   
+        </p:submenu>
     </pb:menu>
 </ui:composition>
