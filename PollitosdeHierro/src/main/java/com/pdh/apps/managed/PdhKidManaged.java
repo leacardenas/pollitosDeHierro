@@ -78,7 +78,7 @@ public class PdhKidManaged implements Serializable {
                 pdhKid.setPdhKidCreatedDate(getCurrentDate());
                 pdhKidDAO.create(pdhKid);
                 JsfUtil.addSuccessMessage(CREATED);
-                JsfUtil.executeRequest("create-dlg");
+                JsfUtil.redirect("/kids/index.xhtml");
                 pdhKid = new PdhKid();
             } else {
                 JsfUtil.addErrorMessage(DUPLICATED);

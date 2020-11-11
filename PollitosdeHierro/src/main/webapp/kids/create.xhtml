@@ -4,16 +4,16 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-                    
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
     <ui:define name="viewname">
         <li> 
             <p:link outcome="/dashboard">Inicio</p:link><i class="fal fa-long-arrow-right"></i><i class="fal fa-long-arrow-right"></i>Niños<i class="fal fa-long-arrow-right"></i>Crear
         </li>
     </ui:define> 
-    
-        <ui:define name="content">
-        
+
+    <ui:define name="content">
+
         <div class="card card-w-title resolution-center ui-fluid">                                           
             <h:form id="createForm">
                 <p:commandLink id="button-save" update="createForm" oncomplete="if (!args.validationFailed){PF('kidsTable').filter();}" styleClass="Fleft" action="#{pdhKidManaged.create()}">                                    
@@ -26,38 +26,105 @@
                 <p:tooltip position="top" for="button-dismiss" value="Cancelar"/> 
                 <br/>
                 <br/>
-                
+
                 <div class="TexAlCenter">
                     <h2>Crear niño</h2>
                 </div>
-                
+
                 <p:tabView>
                     <p:tab title="Información general">
                         <p:panelGrid columns="5" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
                             <p:panelGrid>
                                 <p:outputLabel for="code" value="Código"/>
-                                <p:inputText id="code" value="#{pdhKidManaged.pdhKid.pdhKidCode}" required="true" requiredMessage="El código es un campo requerido"/>
+                                <p:inputText id="code" value="#{pdhKidManaged.pdhKid.pdhKidCode}" required="true" requiredMessage="Campo requerido"/>
                             </p:panelGrid>
-                                        
+
                             <p:panelGrid>
                                 <p:outputLabel for="name" value="Nombre"/>
-                                <p:inputText id="name" value="#{pdhKidManaged.pdhKid.pdhKidName}" required="true" requiredMessage="El nombre es un campo requerido"/>
+                                <p:inputText id="name" value="#{pdhKidManaged.pdhKid.pdhKidName}" required="true" requiredMessage="Campo requerido"/>
                             </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="surname" value="Apellido"/>
+                                <p:inputText id="surname" value="#{pdhKidManaged.pdhKid.pdhKidSurname}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                           <p:panelGrid>
+                                <p:outputLabel for="age" value="Edad"/>
+                                <p:inputText id="age" value="#{pdhKidManaged.pdhKid.pdhKidAge}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+<!-- 
+                            <p:panelGrid>
+                                <p:outputLabel for="birthday" value="Cumpleaños"/>
+                                <p:inputText id="birthday" value="#{pdhKidManaged.pdhKid.pdhKidBirthDay}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="tshirt" value="Tamaño de camiseta"/>
+                                <p:inputText id="tshirt" value="#{pdhKidManaged.pdhKid.pdhKidTshirtSize}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="pants" value="Tamaño de pantalones"/>
+                                <p:inputText id="pants" value="#{pdhKidManaged.pdhKid.pdhKidPantsSize}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="shoes" value="Tamaño de zapatos"/>
+                                <p:inputText id="shoes" value="#{pdhKidManaged.pdhKid.pdhKidFootwareSize}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="diaper" value="Tamaño de pañales"/>
+                                <p:inputText id="diaper" value="#{pdhKidManaged.pdhKid.pdhKidDiaperSize}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="diagnose" value="Diagnostico"/>
+                                <p:inputText id="diagnose" value="#{pdhKidManaged.pdhKid.pdhKidDiagnose}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="setback" value="Atraso"/>
+                                <p:inputText id="setback" value="#{pdhKidManaged.pdhKid.pdhKidSetback}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="currentDiagnose" value="Diagnostico Actual"/>
+                                <p:inputText id="currentDiagnose" value="#{pdhKidManaged.pdhKid.pdhKidCurrentDiagnose}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="epicrisis" value="Epicrisis"/>
+                                <p:inputText id="epicrisis" value="#{pdhKidManaged.pdhKid.pdhKidAttachedEpicrisis}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="siblings" value="Numero de hermanos"/>
+                                <p:inputText id="siblings" value="#{pdhKidManaged.pdhKid.pdhKidNumberOfSiblings}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="lastBasket" value="Ultima canasta recibida"/>
+                                <p:inputText id="lastBasket" value="#{pdhKidManaged.pdhKid.pdhKidLastBasketReceived}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:outputLabel for="peopleInHouse" value="Numero de personas en la casa"/>
+                                <p:inputText id="peopleInHouse" value="#{pdhKidManaged.pdhKid.pdhKidNumberOfPeopleLivingInHouse}" required="true" requiredMessage="Campo requerido"/>
+                            </p:panelGrid>-->
+
                         </p:panelGrid>
                     </p:tab>
-                    
-                    <p:tab title="IDK">
-                        
-                    </p:tab>
-                                
+
                     <p:panelGrid id="tooltipPanel">
                         <p:tooltip position="top" for="code" value="¿Cuál es el código de referencia de este niño?"/>
                         <p:tooltip position="top" for="name" value="Nombre del niño"/>
                     </p:panelGrid>
                 </p:tabView>
-                            
+
                 <br/>
-                
+
                 <p:commandLink id="button-save-bottom" update="createForm" oncomplete="if (!args.validationFailed){PF('kidsTable').filter();}" styleClass="Fleft" action="#{pdhKidManaged.create()}">                                    
                     <i class="fas fa-plus-circle Fs30"></i>
                 </p:commandLink>
