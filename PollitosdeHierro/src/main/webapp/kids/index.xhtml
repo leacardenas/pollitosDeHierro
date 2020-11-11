@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="viewname">
+        <li> 
+            <p:link outcome="/dashboard">Inicio</p:link><i class="fal fa-long-arrow-right"></i>Niños
+        </li>
+    </ui:define> 
+
+    <ui:define name="content">
+        <div class="card card-w-title resolution-center ui-fluid">
+            <h:form  id="form">   
+                <p:growl life="10000" id="generalGrowl"  escape="false" showDetail="true" showSummary="false"> <p:autoUpdate /> </p:growl>
+                <div class="TexAlCenter">
+                    <div class="TexAlLeft">
+                        <p:link id="button-dismiss" outcome="/configure" styleClass="Fleft">
+                            <i class="fas fa-arrow-circle-left Fs30"></i>
+                        </p:link>
+                        <p:tooltip position="top" for="button-dismiss" value="Volver a la pantalla anterior"/>     
+
+                        <p:commandLink id="button-create" styleClass="Fleft" onclick="PF('create-dlg').show();">                                    
+                            <i class="fas fa-plus-circle Fs30"></i>
+                        </p:commandLink>
+                        <p:tooltip position="top" for="button-create" value="crear usuario nuevo"/>
+                    </div>
+
+                    <h2 class="CardTopic TexAlCenter Fs25">Niños</h2>
+
+                    <p:dataTable reflow="true" multiViewState="true" filterDelay="1300" id="userTable" var="user" value="#{pdhUserManaged.pdhUsers}" widgetVar="userTable" paginator="true" 
+                                 selectionMode="single" rowKey="#{user.pdhUserId}"
+                                 rows="50" emptyMessage="#{bundle.ListCurrenciesEmpty}" rowsPerPageTemplate="50,70,90" 
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+                                 filteredValue="#{pdhUserManaged.filteredPdhUser}"
+                                 >     
+                        <p:ajax event="filter" ignoreAutoUpdate="true"/>
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <p:outputLabel value="Busqueda global" />
+                                <br/><p:inputText id="globalFilter" onblur="PF('userTable').filter()" style="width:90%" placeholder="Buscar..."/>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:column style="width:20px" exportable="false"> 
+                            <p:commandLink rendered="#{(user.pdhUserCreatedBy.pdhUserUsername != null and user.pdhUserCreatedBy.pdhUserUsername != '') or !(user.pdhUserUpdatedBy.pdhUserUsername == null or user.pdhUserUpdatedBy.pdhUserUsername == '')}" process="@this" id="updateCreatedBy" styleClass="Fleft">                                    
+                                <i class="fas fa-id-card-alt Fs20"></i>
+                            </p:commandLink>
+                            <p:tooltip position="top" for="updateCreatedBy" value="Creado por: #{user.pdhUserCreatedBy.pdhUserUsername} 
+                                       #{userLoginManaged.formatDateWithHour(user.pdhUserCreatedDate)}" 
+                                       rendered="#{(user.pdhUserUpdatedBy.pdhUserUsername == null or user.pdhUserUpdatedBy.pdhUserUsername == '')}"/>     
+                            <p:tooltip position="top" for="updateCreatedBy" value="Creado por: #{user.pdhUserCreatedBy.pdhUserUsername} 
+                                       #{userLoginManaged.formatDateWithHour(user.pdhUserCreatedDate)} 
+                                       Actualizado por: #{user.pdhUserUpdatedBy.pdhUserUsername} 
+                                       #{userLoginManaged.formatDateWithHour(user.pdhUserUpdatedDate)}" 
+                                       rendered="#{!(user.pdhUserUpdatedBy.pdhUserUsername == null or user.pdhUserUpdatedBy.pdhUserUsername == '') and !(user.pdhUserCreatedBy.pdhUserUsername == null and user.pdhUserCreatedBy.pdhUserUsername == '')}"/>
+                            <p:tooltip position="top" for="updateCreatedBy" value="Actualizado por: #{user.pdhUserUpdatedBy.pdhUserUsername} 
+                                       #{userLoginManaged.formatDateWithHour(user.pdhUserUpdatedDate)}" 
+                                       rendered="#{!(user.pdhUserUpdatedBy.pdhUserUsername == null or user.pdhUserUpdatedBy.pdhUserUsername == '') and (user.pdhUserCreatedBy.pdhUserUsername == null or user.pdhUserCreatedBy.pdhUserUsername == '')}"/>
+                        </p:column>
+
+                        <p:column filterBy="#{user.pdhUserIsHeadquarterManager}" headerText="Código" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{user.pdhUserIsHeadquarterManager ? 'Sí' : 'No'}" />                           
+                        </p:column>
+
+                        <p:column filterBy="#{user.pdhUserName} #{user.pdhUserSurname}" headerText="Nombre" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{user.pdhUserName} #{user.pdhUserSurname}" />                           
+                        </p:column>
+
+                        <p:column filterBy="#{user.pdhUserIsSponsor}" headerText="Edad" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{user.pdhUserIsSponsor ? 'Sí' : 'No'}" />                           
+                        </p:column>
+
+                        <!--
+                        <p:column styleClass="actions" headerText="Opciones" exportable="false">   
+                            <p:commandLink process="@this" resetValues="true" id="rowInfo" onclick="PF('view-dlg').show();" update="viewForm" styleClass="Fleft" > 
+                                <i class="fas fa-eye Fs20"></i>
+                                <f:param  value="#{user.pdhUserId}" name="id"/> 
+                            </p:commandLink>
+                            <p:tooltip position="top" for="rowInfo" value="Ver información"/>
+                            
+                            <p:commandLink process="@this" resetValues="true" id="editCommand" onclick="PF('edit-dlg').show();" update="editForm" styleClass="Fleft">
+                                <i class="fas fa-pen Fs20"></i>    
+                                <f:param  value="#{user.pdhUserId}" name="id"/> 
+                            </p:commandLink>    
+                            <p:tooltip position="top" for="editCommand" value="Editar información"/>
+                                
+                            <p:commandLink process="@this" resetValues="true" id="deleteCommand" onclick="PF('delete-dlg').show();" update="deleteForm" styleClass="Fleft">                                    
+                                <i class="fas fa-trash Fs20"></i>  
+                                <f:param  value="#{user.pdhUserId}" name="id"/> 
+                            </p:commandLink>     
+                            <p:tooltip position="top" for="deleteCommand" value="Borrar información"/>
+                        </p:column>
+                        -->
+                    </p:dataTable>  
+                </div>
+            </h:form>
+            <br/>
+        </div>
+        <ui:include src="create.xhtml"></ui:include>  
+        <!--ui:include src="edit.xhtml"></ui:include> 
+        <ui:include src="delete.xhtml"></ui:include> 
+        <ui:include src="view.xhtml"></ui:include--> 
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,184 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                >
+    
+    <p:dialog header="Crear" maximizable="true" widgetVar="create-dlg" modal="true" dynamic="true" >
+        <div class="card card-w-title resolution-center ui-fluid">
+            <h:form id="createForm">
+                <p:commandLink id="button-save" update="createForm" oncomplete="if (!args.validationFailed){PF('userTable').filter();}" styleClass="Fleft" action="#{pdhUserManaged.create()}">                                    
+                    <i class="fas fa-plus-circle Fs30"></i>
+                </p:commandLink>
+                
+                <p:commandLink id="button-dismiss" styleClass="Fleft" onclick="PF('create-dlg').hide();">                                    
+                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                </p:commandLink>
+                
+                <p:tooltip position="top" for="button-save" value="Guardar"/>
+                <p:tooltip position="top" for="button-dismiss" value="Cancelar"/> 
+                
+                <p:panelGrid columns="5" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
+                    <p:panelGrid>
+                        <p:outputLabel for="active" value="¿Activo?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="active" value="#{pdhUserManaged.pdhUser.pdhUserActive}"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="code" value="Código:"/>
+                        <p:inputText id="code" value="#{pdhUserManaged.pdhUser.pdhUserUsername}" required="true" requiredMessage="El código es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="id" value="Identificación:"/>
+                        <p:inputText id="id" value="#{pdhUserManaged.pdhUser.pdhUserIdentificationNumber}" required="true" requiredMessage="El número de identificación es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="name" value="Nombre:"/>
+                        <p:inputText id="name" value="#{pdhUserManaged.pdhUser.pdhUserName}" required="true" requiredMessage="El nombre es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="surname" value="Apellidos:"/>
+                        <p:inputText id="surname" value="#{pdhUserManaged.pdhUser.pdhUserSurname}" required="true" requiredMessage="El apellido es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="phone_1" value="Teléfono 1:"/>
+                        <p:inputText id="phone_1" value="#{pdhUserManaged.pdhUser.pdhUserPhone1}" maxlength="200"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="phone_2" value="Teléfono 2:"/>
+                        <p:inputText id="phone_2" value="#{pdhUserManaged.pdhUser.pdhUserPhone2}" maxlength="200"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="province" value="Provincia:"/>
+                        <p:selectOneMenu id="province" converter="#{locationConverter}" value="#{pdhUserManaged.pdhUser.pdhUserProvince}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhGeolocationsManaged.pdhGeolocations}" var="location" itemValue="#{location}" itemLabel="#{location.pdhGeolocationsName}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid> 
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="city" value="Cantón:"/>
+                        <p:selectOneMenu id="city" converter="#{locationConverter}" value="#{pdhUserManaged.pdhUser.pdhUserCity}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhGeolocationsManaged.pdhGeolocations}" var="location" itemValue="#{location}" itemLabel="#{location.pdhGeolocationsName}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="district" value="Distrito:"/>
+                        <p:selectOneMenu id="district" converter="#{locationConverter}" value="#{pdhUserManaged.pdhUser.pdhUserDistrict}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhGeolocationsManaged.pdhGeolocations}" var="location" itemValue="#{location}" itemLabel="#{location.pdhGeolocationsName}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="address" value="Dirección:"/>
+                        <p:inputText id="address" value="#{pdhUserManaged.pdhUser.pdhUserAddress}" maxlength="2000"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="timezone" value="Zona horaria:"/>
+                        <p:selectOneMenu id="timezone" converter="#{kidConverter}" value="#{pdhUserManaged.pdhUser.pdhUserTimezone}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhUserManaged.timeZoneIDs}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                        
+                    <h:inputHidden/><h:inputHidden/><h:inputHidden/>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="isAdmin" value="¿Es administrador?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isAdmin" value="#{pdhUserManaged.pdhUser.pdhUserIsAdmin}"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="isSponsor" value="¿Es tío?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isSponsor" value="#{pdhUserManaged.pdhUser.pdhUserIsSponsor}"
+                                               disabled="#{pdhUserManaged.pdhUser.pdhUserIsVoluntary or pdhUserManaged.pdhUser.pdhUserIsHeadquarterManager}">
+                            <p:ajax update="isHeadquarterManager,isVoluntary" listener="#{pdhUserManaged.isSponsor(pdhUserManaged.pdhUser)}"/>
+                        </p:selectBooleanButton>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="isHeadquarterManager" value="¿Es jefe de sede?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isHeadquarterManager" value="#{pdhUserManaged.pdhUser.pdhUserIsHeadquarterManager}"
+                                               disabled="#{pdhUserManaged.pdhUser.pdhUserIsVoluntary or pdhUserManaged.pdhUser.pdhUserIsSponsor}">
+                            <p:ajax update="isSponsor,isVoluntary" listener="#{pdhUserManaged.isHeadquarterManager(pdhUserManaged.pdhUser)}"/>
+                        </p:selectBooleanButton>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="isVoluntary" value="¿Es voluntario?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isVoluntary" value="#{pdhUserManaged.pdhUser.pdhUserIsVoluntary}"
+                                               disabled="#{pdhUserManaged.pdhUser.pdhUserIsHeadquarterManager or pdhUserManaged.pdhUser.pdhUserIsSponsor}">
+                            <p:ajax update="isSponsor,isHeadquarterManager" listener="#{pdhUserManaged.isVoluntary(pdhUserManaged.pdhUser)}"/>
+                        </p:selectBooleanButton>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="isIT" value="¿Es IT?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isIT" value="#{pdhUserManaged.pdhUser.pdhUserIsIt}"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="kid" value="Niño:"/>
+                        <p:selectOneMenu id="kid" converter="#{kidConverter}" value="#{pdhUserManaged.pdhUser.pdhUserKid}">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhKidManaged.pdhKids}" var="kid" itemValue="#{kid}" itemLabel="#{kid.pdhKidName} #{kid.pdhKidSurname}"/>
+                            <p:ajax update="pacientRelationshipPanel, helpGivenPanel"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                        
+                    <h:panelGrid id="pacientRelationshipPanel" rendered="#{pdhUserManaged.pdhUser.pdhUserKid != null}">
+                        <p:outputLabel for="pacientRelationship" value="Relación:"/>
+                        <p:inputText id="pacientRelationship" value="#{pdhUserManaged.pdhUser.pdhUserPacientRelationship}" maxlength="2000"/>
+                    </h:panelGrid>
+                        
+                    <h:panelGrid id="helpGivenPanel" rendered="#{pdhUserManaged.pdhUser.pdhUserKid != null}">
+                        <p:outputLabel for="helpGiven" value="Ayuda:"/>
+                        <p:inputText id="helpGiven" value="#{pdhUserManaged.pdhUser.pdhUserHelpGiven}" maxlength="2000"/>
+                    </h:panelGrid>
+                </p:panelGrid>
+                    
+                <p:tooltip position="top" for="active" value="¿Este usuario está actualmente activo?"/>
+                <p:tooltip position="top" for="code" value="Código de referencia"/>
+                <p:tooltip position="top" for="id" value="Número de identificación"/>
+                <p:tooltip position="top" for="name" value="Nombre del usuario"/>
+                <p:tooltip position="top" for="surname" value="Apellidos del usuario"/>
+                <p:tooltip position="top" for="role" value="Rol del usuario"/>
+                <p:tooltip position="top" for="isSponsor" value="¿El usuario es un tío?"/>
+                <p:tooltip position="top" for="isHeadquarterManager" value="¿El usuario es un jefe de sede?"/>
+                <p:tooltip position="top" for="isAdmin" value="¿El usuario es un administrador del sistema?"/>
+                <p:tooltip position="top" for="isIT" value="¿El usuario es un técnico?"/>
+                <p:tooltip position="top" for="phone_1" value="Número de teléfono principal"/>
+                <p:tooltip position="top" for="phone_2" value="Número de teléfono secundario"/>
+                <p:tooltip position="top" for="province" value="¿En que provincia vive este usuario?"/>
+                <p:tooltip position="top" for="city" value="¿En que cantón vive este usuario?"/>
+                <p:tooltip position="top" for="district" value="¿En que distrito vive este usuario?"/>
+                <p:tooltip position="top" for="address" value="Dirección exacta de donde vive este usuario"/>
+                <p:tooltip position="top" for="pacientRelationship" value="¿Eué tipo de relación tiene el usuario con el niño?"/>
+                <p:tooltip position="top" for="helpGiven" value="¿Qué tipo de ayuda provee el usuario?"/>
+                <p:tooltip position="top" for="kid" value="¿El usuario tiene encargado un niño especifico?"/>
+                <p:tooltip position="top" for="timezone" value="Zona horaria del usuario"/>
+                
+                <p:commandLink id="button-save-bottom" update="createForm" oncomplete="if (!args.validationFailed){PF('userTable').filter();}" styleClass="Fleft" action="#{pdhUserManaged.create()}">                                    
+                    <i class="fas fa-plus-circle Fs30"></i>
+                </p:commandLink>
+                <p:commandLink id="button-dismiss-bottom" styleClass="Fleft" onclick="PF('create-dlg').hide();">                                    
+                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                </p:commandLink>
+                <p:tooltip position="top" for="button-save-bottom" value="Guardar"/>
+                <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>                     
+            </h:form>
+            <br/>
+        </div>
+    </p:dialog>  
+</ui:composition>
