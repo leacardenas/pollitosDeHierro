@@ -5,17 +5,24 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-                    
+    
     <ui:define name="viewname">
         <li>
             <p:link outcome="/dashboard">Inicio</p:link><i class="fal fa-long-arrow-right"></i>Configuraciones
         </li>
     </ui:define>
     <ui:define name="content">
+        
+        <p:link id="button-dismiss" outcome="/dashboard" styleClass="Fleft">
+            <i class="far fa-arrow-circle-left Fs50"></i>
+        </p:link>
+        <p:tooltip position="top" for="button-dismiss" value="Volver a la pantalla anterior"/>   
+                            
+                            
         <h:form>
             <p:growl life="10000" id="messages" showDetail="true" showSummary="false"/>     
         </h:form>      
-            
+        
         <div class="layout-dashboard">
             <div class="card card-w-title resolution-center ui-fluid">
                 <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-6,ui-grid-col-6">
@@ -27,7 +34,7 @@
                             </div>
                         </p:link>
                     </c:if>
-                    
+                        
                     <c:if test="#{userLoginManaged.user.pdhUserIsIt or userLoginManaged.user.pdhUserIsAdmin}">
                         <p:link outcome="headquarter/index">
                             <div class="overview-box checkin">
@@ -36,7 +43,7 @@
                             </div>
                         </p:link>
                     </c:if>
-                    
+                        
                     <c:if test="#{userLoginManaged.user.pdhUserIsIt or userLoginManaged.user.pdhUserIsAdmin}">
                         <p:link outcome="locations/index">
                             <div class="overview-box checkin">
@@ -46,7 +53,7 @@
                         </p:link>
                     </c:if>
                 </p:panelGrid>
-
+                    
             </div>
         </div>         
     </ui:define>
