@@ -8,7 +8,7 @@
             <h:form id="deleteForm">
                 <h:outputLabel value="¿Esta seguro que quiere borrar el dato?"/>		                       
                 <br/><br/>
-                <p:commandLink id="button-delete" styleClass="Fleft" action="#{pdhUserManaged.delete()}" update="deleteForm" oncomplete="if (!args.validationFailed){PF('userTable').filter();}">                                    
+                <p:commandLink id="button-delete" styleClass="Fleft" action="#{pdhGeolocationsManaged.delete()}" update="deleteForm" oncomplete="if (!args.validationFailed){PF('locationsTable').filter();}">                                    
                     <i class="fas fa-trash Fs30"></i>
                 </p:commandLink>
                 <p:commandLink process="@this" resetValues="true" id="button-dismiss" onclick="PF('delete-dlg').hide()();" styleClass="Fleft">
