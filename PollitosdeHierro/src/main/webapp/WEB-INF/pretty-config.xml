@@ -8,6 +8,46 @@
         <view-id value="/dashboard.xhtml" />
     </url-mapping>
     
+    <url-mapping id="configuracion">
+        <pattern value="/Pollitos-De-Hierro-Configuraciones/" />
+        <view-id value="/configure.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="users">
+        <pattern value="/Pollitos-De-Hierro-Usuarios/" />
+        <view-id value="/users/index.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="kids">
+        <pattern value="/Pollitos-De-Hierro-Ninos/" />
+        <view-id value="/kids/index.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="kids-create">
+        <pattern value="/Pollitos-De-Hierro-Ninos-Crear/" />
+        <view-id value="/kids/create.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="kids-edit">
+        <pattern value="/Pollitos-De-Hierro-Ninos-Editar/" />
+        <view-id value="/kids/edit.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="kids-view">
+        <pattern value="/Pollitos-De-Hierro-Ninos-Ver/" />
+        <view-id value="/kids/view.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="locations">
+        <pattern value="/Pollitos-De-Hierro-Localizaciones/" />
+        <view-id value="/locations/index.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="headquarter">
+        <pattern value="/Pollitos-De-Hierro-Sedes/" />
+        <view-id value="/headquarter/index.xhtml" />
+    </url-mapping>
+    
     <!--/Pollitos-De-Hierro-->
 </pretty-config>
 

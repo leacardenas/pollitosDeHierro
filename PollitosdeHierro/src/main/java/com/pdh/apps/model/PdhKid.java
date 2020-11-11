@@ -56,6 +56,24 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PdhKid.findByPdhKidHelpingPeople", query = "SELECT p FROM PdhKid p WHERE p.pdhKidHelpingPeople = :pdhKidHelpingPeople")})
 public class PdhKid implements Serializable {
 
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "pdh_kid_footware_size")
+    private String pdhKidFootwareSize;
+
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "pdh_kid_tshirt_size")
+    private String pdhKidTshirtSize;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "pdh_kid_pants_size")
+    private String pdhKidPantsSize;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "pdh_kid_diaper_size")
+    private String pdhKidDiaperSize;
+
     @OneToMany(mappedBy = "pdhUserKid")
     private Collection<PdhUser> pdhUserCollection;
 
@@ -86,15 +104,6 @@ public class PdhKid implements Serializable {
     @Column(name = "pdh_kid_birth_day")
     @Temporal(TemporalType.TIMESTAMP)
     private Date pdhKidBirthDay;
-    @Column(name = "pdh_kid_tshirt_size")
-    private Integer pdhKidTshirtSize;
-    @Column(name = "pdh_kid_pants_size")
-    private Integer pdhKidPantsSize;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "pdh_kid_footware_size")
-    private Double pdhKidFootwareSize;
-    @Column(name = "pdh_kid_diaper_size")
-    private Integer pdhKidDiaperSize;
     @Lob
     @Size(max = 65535)
     @Column(name = "pdh_kid_diagnose")
@@ -194,38 +203,6 @@ public class PdhKid implements Serializable {
 
     public void setPdhKidBirthDay(Date pdhKidBirthDay) {
         this.pdhKidBirthDay = pdhKidBirthDay;
-    }
-
-    public Integer getPdhKidTshirtSize() {
-        return pdhKidTshirtSize;
-    }
-
-    public void setPdhKidTshirtSize(Integer pdhKidTshirtSize) {
-        this.pdhKidTshirtSize = pdhKidTshirtSize;
-    }
-
-    public Integer getPdhKidPantsSize() {
-        return pdhKidPantsSize;
-    }
-
-    public void setPdhKidPantsSize(Integer pdhKidPantsSize) {
-        this.pdhKidPantsSize = pdhKidPantsSize;
-    }
-
-    public Double getPdhKidFootwareSize() {
-        return pdhKidFootwareSize;
-    }
-
-    public void setPdhKidFootwareSize(Double pdhKidFootwareSize) {
-        this.pdhKidFootwareSize = pdhKidFootwareSize;
-    }
-
-    public Integer getPdhKidDiaperSize() {
-        return pdhKidDiaperSize;
-    }
-
-    public void setPdhKidDiaperSize(Integer pdhKidDiaperSize) {
-        this.pdhKidDiaperSize = pdhKidDiaperSize;
     }
 
     public String getPdhKidDiagnose() {
@@ -372,6 +349,38 @@ public class PdhKid implements Serializable {
 
     public void setPdhUserCollection(Collection<PdhUser> pdhUserCollection) {
         this.pdhUserCollection = pdhUserCollection;
+    }
+
+    public String getPdhKidTshirtSize() {
+        return pdhKidTshirtSize;
+    }
+
+    public void setPdhKidTshirtSize(String pdhKidTshirtSize) {
+        this.pdhKidTshirtSize = pdhKidTshirtSize;
+    }
+
+    public String getPdhKidPantsSize() {
+        return pdhKidPantsSize;
+    }
+
+    public void setPdhKidPantsSize(String pdhKidPantsSize) {
+        this.pdhKidPantsSize = pdhKidPantsSize;
+    }
+
+    public String getPdhKidDiaperSize() {
+        return pdhKidDiaperSize;
+    }
+
+    public void setPdhKidDiaperSize(String pdhKidDiaperSize) {
+        this.pdhKidDiaperSize = pdhKidDiaperSize;
+    }
+
+    public String getPdhKidFootwareSize() {
+        return pdhKidFootwareSize;
+    }
+
+    public void setPdhKidFootwareSize(String pdhKidFootwareSize) {
+        this.pdhKidFootwareSize = pdhKidFootwareSize;
     }
     
 }

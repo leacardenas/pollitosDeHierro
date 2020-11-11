@@ -78,7 +78,7 @@ public class PdhKidManaged implements Serializable {
                 pdhKid.setPdhKidCreatedDate(getCurrentDate());
                 pdhKidDAO.create(pdhKid);
                 JsfUtil.addSuccessMessage(CREATED);
-                JsfUtil.redirect("/kids/index.xhtml");
+                JsfUtil.redirect("../Pollitos-De-Hierro-Ninos/");
                 pdhKid = new PdhKid();
             } else {
                 JsfUtil.addErrorMessage(DUPLICATED);
@@ -98,7 +98,7 @@ public class PdhKidManaged implements Serializable {
                 requestedPdhKidById.setPdhKidUpdatedDate(getCurrentDate());
                 pdhKidDAO.edit(requestedPdhKidById);
                 JsfUtil.addSuccessMessage(EDITED);
-                JsfUtil.executeRequest("edit-dlg");
+                JsfUtil.redirect("../Pollitos-De-Hierro-Ninos-Editar/?id=" + requestedPdhKidById.getPdhKidId());
             } else {
                 JsfUtil.addErrorMessage(DUPLICATED);
             }
