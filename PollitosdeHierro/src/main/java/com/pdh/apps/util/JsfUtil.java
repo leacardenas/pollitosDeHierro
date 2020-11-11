@@ -49,20 +49,20 @@ public final class JsfUtil {
     }
 
     public static void addErrorMessage(String msg) {
-        FacesContext.getCurrentInstance().addMessage("error", new FacesMessage(FacesMessage.SEVERITY_ERROR, JsfUtil.getMessage("ERROR.PROCESS"), msg));
+        FacesContext.getCurrentInstance().addMessage("error", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: ", msg));
     }
 
     public static void addWarningMessage(String msg) {
-        FacesContext.getCurrentInstance().addMessage("warning", new FacesMessage(FacesMessage.SEVERITY_WARN, JsfUtil.getMessage("WARNING.PROCESS"), msg));
+        FacesContext.getCurrentInstance().addMessage("warning", new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso: ", msg));
     }
 
     public static void addSuccessMessage(String msg) {
-        FacesContext.getCurrentInstance().addMessage("success", new FacesMessage(FacesMessage.SEVERITY_INFO, JsfUtil.getMessage("SUCCESS.PROCESS"), msg));
+        FacesContext.getCurrentInstance().addMessage("success", new FacesMessage(FacesMessage.SEVERITY_INFO, "Completado: ", msg));
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
     }
 
     public static void addInfoMessage(String msg) {
-        FacesContext.getCurrentInstance().addMessage("info", new FacesMessage(FacesMessage.SEVERITY_INFO, JsfUtil.getMessage("INFO.PROCESS"), msg));
+        FacesContext.getCurrentInstance().addMessage("info", new FacesMessage(FacesMessage.SEVERITY_INFO, "Información: ", msg));
     }
 
     public static String getRequestParameter(String key) {
