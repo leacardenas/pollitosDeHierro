@@ -8,7 +8,6 @@
                     
     <ui:define name="viewname">
         <li> 
-            <p:link outcome="/dashboard">Inicio</p:link><p:link><i class="fal fa-long-arrow-right"></i>Usuarios</p:link>
             <p:link outcome="/dashboard">Inicio</p:link><i class="fal fa-long-arrow-right"></i><p:link outcome="/configure">Configuraciones</p:link><i class="fal fa-long-arrow-right"></i>Usuarios
         </li>
     </ui:define> 
@@ -43,7 +42,7 @@
                         <p:tooltip position="top" for="exportPDF" value="Exportar en PDF"/>
                     </div>
                         
-                    <h2 class="CardTopic TexAlCenter Fs25"><i class="fas fa-user"></i>Usuarios del sistema</h2>
+                    <h2 class="CardTopic TexAlCenter Fs25">Usuarios del sistema</h2>
                     
                     <p:dataTable reflow="true" multiViewState="true" filterDelay="1300" id="userTable" var="user" value="#{pdhUserManaged.pdhUsers}" widgetVar="userTable" paginator="true" 
                                  selectionMode="single" rowKey="#{user.pdhUserId}"

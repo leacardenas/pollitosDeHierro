@@ -17,7 +17,7 @@
                 <p:tooltip position="top" for="button-save" value="Guardar"/>
                 <p:tooltip position="top" for="button-dismiss" value="Cancelar"/> 
                     
-                <p:panelGrid columns="4" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
+                <p:panelGrid columns="5" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
                     <p:panelGrid>
                         <p:outputLabel for="active" value="¿Activo?"/>
                         <p:selectBooleanButton onLabel="Sí" offLabel="No" id="active" value="#{pdhUserManaged.pdhUser.pdhUserActive}"/>
@@ -44,14 +44,6 @@
                     </p:panelGrid>
                         
                     <p:panelGrid>
-                        <p:outputLabel for="role" value="Rol:"/>
-                        <p:selectOneMenu id="role" converter="#{roleConverter}" value="#{pdhUserManaged.pdhUser.pdhUserRole}" required="true" requiredMessage="El rol es un campo requerido">
-                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{pdhRoleManaged.pdhRoles}"/>
-                        </p:selectOneMenu>
-                    </p:panelGrid> 
-                        
-                    <p:panelGrid>
                         <p:outputLabel for="isSponsor" value="¿Es tío?"/>
                         <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isSponsor" value="#{pdhUserManaged.pdhUser.pdhUserIsSponsor}"/>
                     </p:panelGrid>
@@ -64,6 +56,16 @@
                     <p:panelGrid>
                         <p:outputLabel for="isVoluntary" value="¿Es voluntario?"/>
                         <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isVoluntary" value="#{pdhUserManaged.pdhUser.pdhUserIsVoluntary}"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="isAdmin" value="¿Es administrador?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isAdmin" value="#{pdhUserManaged.pdhUser.pdhUserIsAdmin}"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="isAdmin" value="¿Es administrador?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isAdmin" value="#{pdhUserManaged.pdhUser.pdhUserIsAdmin}"/>
                     </p:panelGrid>
                     
                     <p:panelGrid>
@@ -156,7 +158,7 @@
                     <i class="fas fa-plus-circle Fs30"></i>
                 </p:commandLink>
                 <p:link id="button-dismiss-bottom" outcome="/index" styleClass="Fleft">
-                    <i class="fal fa-arrow-circle-left Fs30"></i>
+                    <i class="fas fa-arrow-circle-left Fs30"></i>
                 </p:link>
                 <p:tooltip position="top" for="button-save-bottom" value="Guardar"/>
                 <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>                     

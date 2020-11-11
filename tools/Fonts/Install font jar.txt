@@ -1,0 +1,31 @@
+****************TO INSTALL FONTS JAR IN YOUR COMPUTER*****************
+1. Open Fonts project in NetBeans (Ex.: C:/Toursys/fonts)
+
+2. Clean and build the Fonts project
+
+3. Execute in console:
+mvn install:install-file -Dfile=C:\Toursys\Fonts\fonts\target\fonts-1.0-SNAPSHOT.jar -DgroupId=toursys-fonts -DartifactId=toursys-fonts -Dversion=1.0 -Dpackaging=jar
+
+4. Clean and build the Toursys project
+
+
+
+***************TO INCLUDE FONTS TO THE PROJECT************************
+1. Open Fonts project in NetBeans (Ex.: C:/Toursys/fonts)
+2. Open "Other Sources" folder
+3. Right click on "src/main/resources" folder
+4. Click on new->Java package
+5. In Package name field type: fonts.new font (ex.: fonts.arial)
+6. Include .ttf files into the package (Most of .ttf files are in C:/Windows/Fonts. Those are fonts supported by Windows. If a font is not found there, download the .ttf files of the font)
+7. On "src/main/resources" folder open "fonts" package and open "fonts.xml"
+8. Include the font family information. For example:
+
+<fontFamily name="Arial">
+        <normal><![CDATA[fonts/arial/arial.ttf]]></normal>
+        <bold><![CDATA[fonts/arial/arialbd.ttf]]></bold>
+        <italic><![CDATA[fonts/arial/ariali.ttf]]></italic>
+        <boldItalic><![CDATA[fonts/arial/arialbi.ttf]]></boldItalic>
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+</fontFamily>
+
+9. Follow the steps mentioned in "TO INSTALL FONTS JAR IN YOUR COMPUTER" section

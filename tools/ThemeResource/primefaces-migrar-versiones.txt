@@ -1,0 +1,10 @@
+1. Ir a: C:\Users\tuUsuario\.m2\repository\org\primefaces\primefaces
+2. Crear un folder llamado igual a la versión de primefaces que quiere instalar. (Ejemplo: 6.0.17)
+3. Mover el archivo primefaces/version/.jar y moverlo a ese folder nuevo que se ha creado en el paso 2.
+4. En netbeans Clean and Build y listo
+----------------------------------------------------------------------------
+Seguir estos pasos si no se ha agregado la dependencia o librería al proyecto. 
+1. Abrir el proyecto que se quiere agregar la dependencia o librería
+2. Abrir el pom del proyecto
+3. Cambiar el número de versión que será ahora utilizada en el proyecto
+4. Dar Clean and Build a proyecto

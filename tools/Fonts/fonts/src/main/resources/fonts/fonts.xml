@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+    <fontFamily name="Verdana">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/verdana/verdana.ttf]]></normal>
+        <!-- Bold Arial Font -->
+        <bold><![CDATA[fonts/verdana/verdanab.ttf]]></bold>
+        <!-- Italic Arial Font -->
+        <italic><![CDATA[fonts/verdana/verdanai.ttf]]></italic>
+        <!-- Bolt italic Arial Font -->
+        <boldItalic><![CDATA[fonts/verdana/verdanaz.ttf]]></boldItalic>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+    <fontFamily name="Arial">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/arial/arial.ttf]]></normal>
+        <!-- Bold Arial Font -->
+        <bold><![CDATA[fonts/arial/arialbd.ttf]]></bold>
+        <!-- Italic Arial Font -->
+        <italic><![CDATA[fonts/arial/ariali.ttf]]></italic>
+        <!-- Bolt italic Arial Font -->
+        <boldItalic><![CDATA[fonts/arial/arialbi.ttf]]></boldItalic>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+    <fontFamily name="Calibri">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/calibri/calibri.ttf]]></normal>
+        <!-- Bold Arial Font -->
+        <bold><![CDATA[fonts/calibri/calibrib.ttf]]></bold>
+        <!-- Italic Arial Font -->
+        <italic><![CDATA[fonts/calibri/calibrii.ttf]]></italic>
+        <!-- Bolt italic Arial Font -->
+        <boldItalic><![CDATA[fonts/calibri/calibriz.ttf]]></boldItalic>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+    <fontFamily name="Times New Roman">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/timesNewRoman/times.ttf]]></normal>
+        <!-- Bold Arial Font -->
+        <bold><![CDATA[fonts/timesNewRoman/timesbd.ttf]]></bold>
+        <!-- Italic Arial Font -->
+        <italic><![CDATA[fonts/timesNewRoman/timesi.ttf]]></italic>
+        <!-- Bolt italic Arial Font -->
+        <boldItalic><![CDATA[fonts/timesNewRoman/timesbi.ttf]]></boldItalic>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+    <fontFamily name="Cambria">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/cambria/Cambria.ttf]]></normal>
+        <!-- Bold Arial Font -->
+        <bold><![CDATA[fonts/cambria/cambriab.ttf]]></bold>
+        <!-- Italic Arial Font -->
+        <italic><![CDATA[fonts/cambria/cambriai.ttf]]></italic>
+        <!-- Bolt italic Arial Font -->
+        <boldItalic><![CDATA[fonts/cambria/cambriaz.ttf]]></boldItalic>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+    <fontFamily name="Symbol">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/symbol/symbol.ttf]]></normal>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+    <fontFamily name="Courier New">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/courierNew/cour.ttf]]></normal>
+        <!-- Bold Arial Font -->
+        <bold><![CDATA[fonts/courierNew/courbd.ttf]]></bold>
+        <!-- Italic Arial Font -->
+        <italic><![CDATA[fonts/courierNew/couri.ttf]]></italic>
+        <!-- Bolt italic Arial Font -->
+        <boldItalic><![CDATA[fonts/courierNew/courbi.ttf]]></boldItalic>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+    
+    <fontFamily name="Century Gothic">
+        <!-- Normal Arial Font -->
+        <normal><![CDATA[fonts/centuryGothic/century.ttf]]></normal>
+        <!-- Bold Arial Font -->
+        <bold><![CDATA[fonts/centuryGothic/centuryb.ttf]]></bold>
+        <!-- Italic Arial Font -->
+        <italic><![CDATA[fonts/centuryGothic/centuryi.ttf]]></italic>
+        <!-- Bolt italic Arial Font -->
+        <boldItalic><![CDATA[fonts/centuryGothic/centurybi.ttf]]></boldItalic>
+        <!-- Is font is embedded in PDF -->
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+</fontFamilies>

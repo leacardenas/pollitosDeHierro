@@ -76,7 +76,6 @@ public class PdhUsersDAO extends AbstractFacade<PdhUser> implements Serializable
         super.refresh();
     }
 
-    //Still doesn't uses the password
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public PdhUser findByUsername(String username) throws ExceptionPollitosDeHierro {
         try {
