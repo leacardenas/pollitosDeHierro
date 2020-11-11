@@ -3,75 +3,179 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
-    <p:dialog  header="#{msg['FORM.EDIT']} #{msg['BANK']}" maximizable="true" widgetVar="dlg3" modal="true" height="350" dynamic="true" >
+    <p:dialog  header="Editar" maximizable="true" widgetVar="edit-dlg" modal="true" height="350" dynamic="true" >
         <div class="card card-w-title resolution-center ui-fluid">
             <h:form id="editForm">
-                <p:commandLink id="button-save" update="editForm" oncomplete="if (!args.validationFailed){PF('userTable').filter();}" styleClass="Fleft" action="#{banksManaged.editBank}">                                    
-                    <i class="fas fa-pen  Fs30"></i>
+                <p:commandLink id="button-save" update="editForm" oncomplete="if (!args.validationFailed){PF('userTable').filter();}" styleClass="Fleft" action="#{pdhUserManaged.edit()}">                                    
+                    <i class="fas fa-plus-circle Fs30"></i>
                 </p:commandLink>
-                <p:commandLink process="@this" resetValues="true" id="button-dismiss" onclick="PF('dlg3').hide()();" styleClass="Fleft">
-                    <i class="fal fa-reply-all  Fs30"></i>
+                    
+                <p:commandLink id="button-dismiss" styleClass="Fleft" onclick="PF('edit-dlg').hide();">                                    
+                    <i class="fas fa-arrow-circle-left Fs30"></i>
                 </p:commandLink>
+                    
                 <p:tooltip position="top" for="button-save" value="Guardar"/>
-                <p:tooltip position="top" for="button-dismiss" value="Cancelar"/>
-
-                <p:panelGrid columns="3" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
-
+                <p:tooltip position="top" for="button-dismiss" value="Cancelar"/> 
+                    
+                <p:panelGrid columns="5" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
                     <p:panelGrid>
-                        <p:outputLabel for="code" value="#{msg['FORM.TAB.CODE']}:"/>
-                        <p:inputText style="width: 90%" id="code" value="#{banksManaged.requestedBankById.bankCode}" required="true" requiredMessage="#{msg['FORM.TAB.CODE']} #{msg['FORM.TAB.REQUIRED']}" maxlength="11"/>
+                        <p:outputLabel for="active" value="¿Activo?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="active" value="#{pdhUserManaged.requestedPdhUserById.pdhUserActive}"/>
                     </p:panelGrid>
-
+                    
                     <p:panelGrid>
-                        <p:outputLabel for="name" value="#{msg['FORM.TAB.NAME']}:"/>
-                        <p:inputText style="width: 90%" id="name" value="#{banksManaged.requestedBankById.bankName}" required="true" requiredMessage="#{msg['FORM.TAB.NAME']} #{msg['FORM.TAB.REQUIRED']}" maxlength="200"/>
+                        <p:outputLabel for="code" value="Usuario:"/>
+                        <p:inputText id="code" value="#{pdhUserManaged.requestedPdhUserById.pdhUserUsername}" required="true" requiredMessage="El código es un campo requerido" maxlength="200"/>
                     </p:panelGrid>
-
+                        
                     <p:panelGrid>
-                        <p:outputLabel for="country" value="#{msg['FORM.TAB.COUNTRY']}:"/>
-                        <p:selectOneMenu style="width: 90%" filter="true" filterMatchMode="contains" id="country" value="#{banksManaged.requestedBankById.bankCountry}" required="true" requiredMessage="#{msg['FORM.TAB.COUNTRY']} #{msg['FORM.TAB.REQUIRED']}">
-                            <f:selectItem itemLabel="#{msg['SELECT.ONE']}" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{banksManaged.countries}" var="locale" itemValue="#{locale.displayCountry}"  itemLabel="#{locale.displayCountry}"  />
+                        <p:outputLabel for="id" value="Identificación:"/>
+                        <p:inputText id="id" value="#{pdhUserManaged.requestedPdhUserById.pdhUserIdentificationNumber}" required="true" requiredMessage="El número de identificación es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="name" value="Nombre:"/>
+                        <p:inputText id="name" value="#{pdhUserManaged.requestedPdhUserById.pdhUserName}" required="true" requiredMessage="El nombre es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="surname" value="Apellidos:"/>
+                        <p:inputText id="surname" value="#{pdhUserManaged.requestedPdhUserById.pdhUserSurname}" required="true" requiredMessage="El apellido es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="phone_1" value="Teléfono 1:"/>
+                        <p:inputText id="phone_1" value="#{pdhUserManaged.requestedPdhUserById.pdhUserPhone1}" maxlength="200"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="phone_2" value="Teléfono 2:"/>
+                        <p:inputText id="phone_2" value="#{pdhUserManaged.requestedPdhUserById.pdhUserPhone2}" maxlength="200"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="province" value="Provincia:"/>
+                        <p:selectOneMenu id="province" converter="#{pdhLocationConverter}" value="#{pdhUserManaged.requestedPdhUserById.pdhUserProvince}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhGeolocationsManaged.pdhGeolocations}" var="location" itemValue="#{location}" itemLabel="#{location.pdhGeolocationsName}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid> 
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="city" value="Cantón:"/>
+                        <p:selectOneMenu id="city" converter="#{pdhLocationConverter}" value="#{pdhUserManaged.requestedPdhUserById.pdhUserCity}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhGeolocationsManaged.pdhGeolocations}" var="location" itemValue="#{location}" itemLabel="#{location.pdhGeolocationsName}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-
+                    
                     <p:panelGrid>
-                        <p:outputLabel for="address" value="#{msg['FORM.TAB.ADDRESS']}:"/>
-                        <p:inputText style="width: 90%" id="address" value="#{banksManaged.requestedBankById.bankAddress}" required="false"  maxlength="200" /> 
+                        <p:outputLabel for="district" value="Distrito:"/>
+                        <p:selectOneMenu id="district" converter="#{pdhLocationConverter}" value="#{pdhUserManaged.requestedPdhUserById.pdhUserDistrict}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhGeolocationsManaged.pdhGeolocations}" var="location" itemValue="#{location}" itemLabel="#{location.pdhGeolocationsName}"/>
+                        </p:selectOneMenu>
                     </p:panelGrid>
-
+                    
                     <p:panelGrid>
-                        <p:outputLabel for="telephone" value="#{msg['FORM.TAB.TELEPHONE']}:"/>
-                        <p:inputText style="width: 90%" id="telephone" value="#{banksManaged.requestedBankById.bankTelephone}"/>
+                        <p:outputLabel for="address" value="Dirección:"/>
+                        <p:inputText id="address" value="#{pdhUserManaged.requestedPdhUserById.pdhUserAddress}" maxlength="2000"/>
                     </p:panelGrid>
-
+                    
                     <p:panelGrid>
-                        <p:outputLabel for="web" value="#{msg['FORM.TAB.WEB']}:"/>
-                        <p:inputText style="width: 90%" id="web" value="#{banksManaged.requestedBankById.bankWeb}" required="false"  maxlength="40" />
+                        <p:outputLabel for="timezone" value="Zona horaria:"/>
+                        <p:selectOneMenu id="timezone" value="#{pdhUserManaged.requestedPdhUserById.pdhUserTimezone}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhUserManaged.timeZoneIDs}"/>
+                        </p:selectOneMenu>
                     </p:panelGrid>
-
+                    
+                    <h:inputHidden/><h:inputHidden/><h:inputHidden/>
+                    
                     <p:panelGrid>
-                        <p:outputLabel for="swift" value="#{msg['FORM.TAB.SWIFT']}:"/>
-                        <p:inputText style="width: 90%" id="swift" value="#{banksManaged.requestedBankById.bankSwift}" required="false"  maxlength="45" />
+                        <p:outputLabel for="isAdmin" value="¿Es administrador?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isAdmin" value="#{pdhUserManaged.requestedPdhUserById.pdhUserIsAdmin}"/>
                     </p:panelGrid>
-                </p:panelGrid> 
-
-                <p:tooltip position="top" for="code" value="#{msg['HELP.BANKS.CODE']}"/>
-                <p:tooltip position="top" for="name" value="#{msg['HELP.BANKS.NAME']}"/>
-                <p:tooltip position="top" for="country" value="#{msg['HELP.BANKS.COUNTRY']}"/>                   
-                <p:tooltip position="top" for="address" value="#{msg['HELP.BANKS.ADDRESS']}"/>
-                <p:tooltip position="top" for="telephone" value="#{msg['HELP.BANKS.TELEPHONE']}"/>
-                <p:tooltip position="top" for="web" value="#{msg['HELP.BANKS.WEB']}"/>
-                <p:tooltip position="top" for="swift" value="#{msg['HELP.BANKS.SWIFT.CODE']}"/>
-
-                <p:commandLink id="button-save-bottom" update="editForm" oncomplete="if (!args.validationFailed){PF('userTable').filter();}" styleClass="Fleft" action="#{banksManaged.editBank}">                                    
-                    <i class="fas fa-pen  Fs30"></i>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="isSponsor" value="¿Es tío?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isSponsor" value="#{pdhUserManaged.requestedPdhUserById.pdhUserIsSponsor}"
+                                               disabled="#{pdhUserManaged.requestedPdhUserById.pdhUserIsVoluntary or pdhUserManaged.requestedPdhUserById.pdhUserIsHeadquarterManager}">
+                            <p:ajax update="isHeadquarterManager,isVoluntary,tooltipPanel" listener="#{pdhUserManaged.isSponsor(pdhUserManaged.pdhUser)}"/>
+                        </p:selectBooleanButton>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="isHeadquarterManager" value="¿Es jefe de sede?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isHeadquarterManager" value="#{pdhUserManaged.requestedPdhUserById.pdhUserIsHeadquarterManager}"
+                                               disabled="#{pdhUserManaged.requestedPdhUserById.pdhUserIsVoluntary or pdhUserManaged.requestedPdhUserById.pdhUserIsSponsor}">
+                            <p:ajax update="isSponsor,isVoluntary,tooltipPanel" listener="#{pdhUserManaged.isHeadquarterManager(pdhUserManaged.pdhUser)}"/>
+                        </p:selectBooleanButton>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="isVoluntary" value="¿Es voluntario?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isVoluntary" value="#{pdhUserManaged.requestedPdhUserById.pdhUserIsVoluntary}"
+                                               disabled="#{pdhUserManaged.requestedPdhUserById.pdhUserIsHeadquarterManager or pdhUserManaged.requestedPdhUserById.pdhUserIsSponsor}">
+                            <p:ajax update="isSponsor,isHeadquarterManager,tooltipPanel" listener="#{pdhUserManaged.isVoluntary(pdhUserManaged.pdhUser)}"/>
+                        </p:selectBooleanButton>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="isIT" value="¿Es IT?"/>
+                        <p:selectBooleanButton onLabel="Sí" offLabel="No" id="isIT" value="#{pdhUserManaged.requestedPdhUserById.pdhUserIsIt}"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="kids" value="Niño:"/>
+                        <p:selectOneMenu id="kids" converter="#{pdhKidConverter}" value="#{pdhUserManaged.requestedPdhUserById.pdhUserKid}">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhKidManaged.pdhKids}" var="kid" itemValue="#{kid}" itemLabel="#{kid.pdhKidName} #{kid.pdhKidSurname}"/>
+                            <p:ajax update="pacientRelationshipPanel, helpGivenPanel,tooltipPanel"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    
+                    <h:panelGroup id="pacientRelationshipPanel">
+                        <p:outputLabel for="pacientRelationship" value="Relación:" rendered="#{pdhUserManaged.requestedPdhUserById.pdhUserKid != null}"/>
+                        <p:inputTextarea id="pacientRelationship" value="#{pdhUserManaged.requestedPdhUserById.pdhUserPacientRelationship}" maxlength="2000" autoResize="false" rows="3" rendered="#{pdhUserManaged.requestedPdhUserById.pdhUserKid != null}"/>
+                    </h:panelGroup>
+                    
+                    <h:panelGroup id="helpGivenPanel">
+                        <p:outputLabel for="helpGiven" value="Ayuda:" rendered="#{pdhUserManaged.requestedPdhUserById.pdhUserKid != null}"/>
+                        <p:inputTextarea id="helpGiven" value="#{pdhUserManaged.requestedPdhUserById.pdhUserHelpGiven}" maxlength="2000" autoResize="false" rows="3" rendered="#{pdhUserManaged.requestedPdhUserById.pdhUserKid != null}"/>
+                    </h:panelGroup>
+                </p:panelGrid>
+                
+                <p:panelGrid id="tooltipPanel">
+                    <p:tooltip position="top" for="active" value="¿Este usuario está actualmente activo?"/>
+                    <p:tooltip position="top" for="code" value="Usuario para ingresar al sistema"/>
+                    <p:tooltip position="top" for="id" value="Número de identificación"/>
+                    <p:tooltip position="top" for="name" value="Nombre del usuario"/>
+                    <p:tooltip position="top" for="surname" value="Apellidos del usuario"/>
+                    <p:tooltip position="top" for="isSponsor" value="¿El usuario es un tío?"/>
+                    <p:tooltip position="top" for="isHeadquarterManager" value="¿El usuario es un jefe de sede?"/>
+                    <p:tooltip position="top" for="isAdmin" value="¿El usuario es un administrador del sistema?"/>
+                    <p:tooltip position="top" for="isIT" value="¿El usuario es un técnico?"/>
+                    <p:tooltip position="top" for="phone_1" value="Número de teléfono principal"/>
+                    <p:tooltip position="top" for="phone_2" value="Número de teléfono secundario"/>
+                    <p:tooltip position="top" for="province" value="¿En que provincia vive este usuario?"/>
+                    <p:tooltip position="top" for="city" value="¿En que cantón vive este usuario?"/>
+                    <p:tooltip position="top" for="district" value="¿En que distrito vive este usuario?"/>
+                    <p:tooltip position="top" for="address" value="Dirección exacta de donde vive este usuario"/>
+                    <p:tooltip position="top" for="pacientRelationship" value="¿Qué tipo de relación tiene el usuario con el niño?"/>
+                    <p:tooltip position="top" for="helpGiven" value="¿Qué tipo de ayuda provee el usuario?"/>
+                    <p:tooltip position="top" for="kids" value="¿El usuario tiene encargado un niño especifico?"/>
+                    <p:tooltip position="top" for="timezone" value="Zona horaria del usuario"/>
+                </p:panelGrid>
+                    
+                <p:commandLink id="button-save-bottom" update="editForm" oncomplete="if (!args.validationFailed){PF('userTable').filter();}" styleClass="Fleft" action="#{pdhUserManaged.edit()}">                                    
+                    <i class="fas fa-plus-circle Fs30"></i>
                 </p:commandLink>
-                <p:commandLink process="@this" resetValues="true" id="button-dismiss-bottom" onclick="PF('dlg3').hide()();" styleClass="Fleft">
-                    <i class="fal fa-reply-all  Fs30"></i>
+                <p:commandLink id="button-dismiss-bottom" styleClass="Fleft" onclick="PF('edit-dlg').hide();">                                    
+                    <i class="fas fa-arrow-circle-left Fs30"></i>
                 </p:commandLink>
                 <p:tooltip position="top" for="button-save-bottom" value="Guardar"/>
-                <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>                    
+                <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>                     
             </h:form>
             <br/>
         </div>

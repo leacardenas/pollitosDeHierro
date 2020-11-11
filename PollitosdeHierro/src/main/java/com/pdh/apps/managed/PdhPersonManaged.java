@@ -39,7 +39,7 @@ public class PdhPersonManaged implements Serializable {
     private static final String EDITED = "Editado exitosamente";
     private static final String DELETED = "Borrado exitosamente";
     private static final String ERROR = "Ha pasado un error";
-    private static final String DUPLICATED = "Error, ya existe está localización";
+    private static final String DUPLICATED = "Error, ya existe está persona";
     
     private List<PdhPerson> filteredPdhPerson;
 
