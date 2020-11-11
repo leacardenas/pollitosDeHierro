@@ -35,7 +35,7 @@ public class PdhUserManaged implements Serializable {
     private static final String EDITED = "Editado exitosamente";
     private static final String DELETED = "Borrado exitosamente";
     private static final String ERROR = "Ha pasado un error";
-    private static final String DUPLICATED = "Error, ya existe está localización";
+    private static final String DUPLICATED = "Error, ya existe un usuario con este código";
     
     private List<PdhUser> filteredPdhUser;
 
@@ -44,10 +44,8 @@ public class PdhUserManaged implements Serializable {
     @EJB
     private PdhUsersDAO pdhUserDAO;
 
-    @EJB
     private PdhUser pdhUser;
 
-    @EJB
     private PdhUser requestedPdhUserById;
 
     @Inject
@@ -72,7 +70,7 @@ public class PdhUserManaged implements Serializable {
     public void create() {
         pdhUsersList = null;
         try {
-            if (pdhUserDAO.validateCode(pdhUser.getPdhUserName(), pdhUser.getPdhUserId(), "create")) {
+            if (pdhUserDAO.validateCode(pdhUser.getPdhUserUsername(), pdhUser.getPdhUserId(), "create")) {
                 pdhUser.setPdhUserCreatedBy(userLoginManaged.getUser());
                 pdhUser.setPdhUserCreatedDate(getCurrentDate());
                 pdhUserDAO.create(pdhUser);

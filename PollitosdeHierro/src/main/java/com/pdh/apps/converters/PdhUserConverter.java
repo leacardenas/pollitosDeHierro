@@ -21,7 +21,7 @@ import javax.faces.bean.RequestScoped;
  */
 @Model
 @RequestScoped
-@FacesConverter(value = "userConverter", forClass = PdhUser.class)
+@FacesConverter(value = "pdhUserConverter", forClass = PdhUser.class)
 public class PdhUserConverter implements Converter {
 
     @EJB

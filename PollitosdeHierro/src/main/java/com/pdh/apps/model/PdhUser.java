@@ -49,6 +49,16 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PdhUser.findByPdhUserDistrict", query = "SELECT p FROM PdhUser p WHERE p.pdhUserDistrict = :pdhUserDistrict")})
 public class PdhUser implements Serializable {
 
+    @JoinColumn(name = "pdh_user_city", referencedColumnName = "pdh_geolocations_id")
+    @ManyToOne
+    private PdhGeolocations pdhUserCity;
+    @JoinColumn(name = "pdh_user_district", referencedColumnName = "pdh_geolocations_id")
+    @ManyToOne
+    private PdhGeolocations pdhUserDistrict;
+    @JoinColumn(name = "pdh_user_province", referencedColumnName = "pdh_geolocations_id")
+    @ManyToOne
+    private PdhGeolocations pdhUserProvince;
+
     @Column(name = "pdh_user_is_it")
     private Boolean pdhUserIsIt;
     @Column(name = "pdh_user_is_admin")
@@ -106,12 +116,6 @@ public class PdhUser implements Serializable {
     @Size(max = 65535)
     @Column(name = "pdh_user_phone_2")
     private String pdhUserPhone2;
-    @Column(name = "pdh_user_province")
-    private Integer pdhUserProvince;
-    @Column(name = "pdh_user_city")
-    private Integer pdhUserCity;
-    @Column(name = "pdh_user_district")
-    private Integer pdhUserDistrict;
     @Lob
     @Size(max = 65535)
     @Column(name = "pdh_user_address")
@@ -259,30 +263,6 @@ public class PdhUser implements Serializable {
 
     public void setPdhUserPhone2(String pdhUserPhone2) {
         this.pdhUserPhone2 = pdhUserPhone2;
-    }
-
-    public Integer getPdhUserProvince() {
-        return pdhUserProvince;
-    }
-
-    public void setPdhUserProvince(Integer pdhUserProvince) {
-        this.pdhUserProvince = pdhUserProvince;
-    }
-
-    public Integer getPdhUserCity() {
-        return pdhUserCity;
-    }
-
-    public void setPdhUserCity(Integer pdhUserCity) {
-        this.pdhUserCity = pdhUserCity;
-    }
-
-    public Integer getPdhUserDistrict() {
-        return pdhUserDistrict;
-    }
-
-    public void setPdhUserDistrict(Integer pdhUserDistrict) {
-        this.pdhUserDistrict = pdhUserDistrict;
     }
 
     public String getPdhUserAddress() {
@@ -504,6 +484,30 @@ public class PdhUser implements Serializable {
 
     public void setPdhUserIsAdmin(Boolean pdhUserIsAdmin) {
         this.pdhUserIsAdmin = pdhUserIsAdmin;
+    }
+
+    public PdhGeolocations getPdhUserCity() {
+        return pdhUserCity;
+    }
+
+    public void setPdhUserCity(PdhGeolocations pdhUserCity) {
+        this.pdhUserCity = pdhUserCity;
+    }
+
+    public PdhGeolocations getPdhUserDistrict() {
+        return pdhUserDistrict;
+    }
+
+    public void setPdhUserDistrict(PdhGeolocations pdhUserDistrict) {
+        this.pdhUserDistrict = pdhUserDistrict;
+    }
+
+    public PdhGeolocations getPdhUserProvince() {
+        return pdhUserProvince;
+    }
+
+    public void setPdhUserProvince(PdhGeolocations pdhUserProvince) {
+        this.pdhUserProvince = pdhUserProvince;
     }
     
 }

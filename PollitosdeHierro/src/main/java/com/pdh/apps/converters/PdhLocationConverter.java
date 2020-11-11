@@ -21,7 +21,7 @@ import javax.faces.bean.RequestScoped;
  */
 @Model
 @RequestScoped
-@FacesConverter(value = "locationConverter", forClass = PdhGeolocations.class)
+@FacesConverter(value = "pdhLocationConverter", forClass = PdhGeolocations.class)
 public class PdhLocationConverter implements Converter {
 
     @EJB

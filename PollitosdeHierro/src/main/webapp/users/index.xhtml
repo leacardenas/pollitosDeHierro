@@ -26,7 +26,7 @@
                         <p:commandLink id="button-create" styleClass="Fleft" onclick="PF('create-dlg').show();">                                    
                             <i class="fas fa-plus-circle Fs30"></i>
                         </p:commandLink>
-                        <p:tooltip position="top" for="button-create" value="crear usuario nuevo"/>
+                        <p:tooltip position="top" for="button-create" value="Crear usuario nuevo"/>
                     </div>
                         
                     <h2 class="CardTopic TexAlCenter Fs25">Usuarios del sistema</h2>
@@ -74,51 +74,59 @@
                             <p:outputLabel value="#{user.pdhUserRole.pdhRoleName}"/>                           
                         </p:column>
                         
-                        <p:column filterBy="#{user.pdhUserIsSponsor}" headerText="Tío?" filterMatchMode="contains"> 
+                        <p:column filterBy="#{user.pdhUserIsAdmin}" headerText="¿Administrador?" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{user.pdhUserIsAdmin ? 'Sí' : 'No'}" />                           
+                        </p:column>
+                        
+                        <p:column filterBy="#{user.pdhUserIsSponsor}" headerText="¿Tío?" filterMatchMode="contains"> 
                             <p:outputLabel value="#{user.pdhUserIsSponsor ? 'Sí' : 'No'}" />                           
                         </p:column>
                         
-                        <p:column filterBy="#{user.pdhUserIsHeadquarterManager}" headerText="Jefe de sede?" filterMatchMode="contains"> 
+                        <p:column filterBy="#{user.pdhUserIsHeadquarterManager}" headerText="¿Jefe de sede?" filterMatchMode="contains"> 
                             <p:outputLabel value="#{user.pdhUserIsHeadquarterManager ? 'Sí' : 'No'}" />                           
                         </p:column>
                         
-                        <p:column filterBy="#{user.pdhUserIsVoluntary}" headerText="Voluntario?" filterMatchMode="contains"> 
+                        <p:column filterBy="#{user.pdhUserIsVoluntary}" headerText="¿Voluntario?" filterMatchMode="contains"> 
                             <p:outputLabel value="#{user.pdhUserIsVoluntary ? 'Sí' : 'No'}" />                           
+                        </p:column>
+                        
+                        <p:column filterBy="#{user.pdhUserIsIt}" headerText="¿Técnico?" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{user.pdhUserIsIt ? 'Sí' : 'No'}" />                           
                         </p:column>
                         
                         <p:column filterBy="#{user.pdhUserIdentificationNumber}" headerText="ID" filterMatchMode="contains"> 
                             <p:outputLabel value="#{user.pdhUserIdentificationNumber}" />                           
                         </p:column>
                         
-                        <!--
+                        
                         <p:column styleClass="actions" headerText="Opciones" exportable="false">   
-                            <p:commandLink process="@this" resetValues="true" id="rowInfo" onclick="PF('view-dlg').show();" update="viewForm" styleClass="Fleft" > 
+                             <p:commandLink process="@this" resetValues="true" id="rowInfo" onclick="PF('view-dlg').show();" update="viewForm" styleClass="Fleft" > 
                                 <i class="fas fa-eye Fs20"></i>
                                 <f:param  value="#{user.pdhUserId}" name="id"/> 
                             </p:commandLink>
                             <p:tooltip position="top" for="rowInfo" value="Ver información"/>
-                            
-                            <p:commandLink process="@this" resetValues="true" id="editCommand" onclick="PF('edit-dlg').show();" update="editForm" styleClass="Fleft">
+                             
+                             <p:commandLink process="@this" resetValues="true" id="editCommand" onclick="PF('edit-dlg').show();" update="editForm" styleClass="Fleft">
                                 <i class="fas fa-pen Fs20"></i>    
                                 <f:param  value="#{user.pdhUserId}" name="id"/> 
                             </p:commandLink>    
                             <p:tooltip position="top" for="editCommand" value="Editar información"/>
-                                
+                            
                             <p:commandLink process="@this" resetValues="true" id="deleteCommand" onclick="PF('delete-dlg').show();" update="deleteForm" styleClass="Fleft">                                    
                                 <i class="fas fa-trash Fs20"></i>  
                                 <f:param  value="#{user.pdhUserId}" name="id"/> 
                             </p:commandLink>     
                             <p:tooltip position="top" for="deleteCommand" value="Borrar información"/>
                         </p:column>
-                        -->
+                       
                     </p:dataTable>  
                 </div>
             </h:form>
             <br/>
         </div>
         <ui:include src="create.xhtml"></ui:include>  
-        <!--ui:include src="edit.xhtml"></ui:include> 
+        <ui:include src="edit.xhtml"></ui:include> 
         <ui:include src="delete.xhtml"></ui:include> 
-        <ui:include src="view.xhtml"></ui:include--> 
+        <ui:include src="view.xhtml"></ui:include>
     </ui:define>
 </ui:composition>

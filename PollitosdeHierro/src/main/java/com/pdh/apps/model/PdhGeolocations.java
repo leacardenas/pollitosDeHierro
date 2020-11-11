@@ -44,6 +44,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PdhGeolocations.findByPdhGeolocationsParent", query = "SELECT p FROM PdhGeolocations p WHERE p.pdhGeolocationsParent = :pdhGeolocationsParent")})
 public class PdhGeolocations implements Serializable {
 
+    @OneToMany(mappedBy = "pdhUserCity")
+    private Collection<PdhUser> pdhUserCollection;
+    @OneToMany(mappedBy = "pdhUserDistrict")
+    private Collection<PdhUser> pdhUserCollection1;
+    @OneToMany(mappedBy = "pdhUserProvince")
+    private Collection<PdhUser> pdhUserCollection2;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -199,6 +206,33 @@ public class PdhGeolocations implements Serializable {
     @Override
     public String toString() {
         return "com.pdh.apps.model.PdhGeolocations[ pdhGeolocationsId=" + pdhGeolocationsId + " ]";
+    }
+
+    @XmlTransient
+    public Collection<PdhUser> getPdhUserCollection() {
+        return pdhUserCollection;
+    }
+
+    public void setPdhUserCollection(Collection<PdhUser> pdhUserCollection) {
+        this.pdhUserCollection = pdhUserCollection;
+    }
+
+    @XmlTransient
+    public Collection<PdhUser> getPdhUserCollection1() {
+        return pdhUserCollection1;
+    }
+
+    public void setPdhUserCollection1(Collection<PdhUser> pdhUserCollection1) {
+        this.pdhUserCollection1 = pdhUserCollection1;
+    }
+
+    @XmlTransient
+    public Collection<PdhUser> getPdhUserCollection2() {
+        return pdhUserCollection2;
+    }
+
+    public void setPdhUserCollection2(Collection<PdhUser> pdhUserCollection2) {
+        this.pdhUserCollection2 = pdhUserCollection2;
     }
     
 }
