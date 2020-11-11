@@ -44,8 +44,10 @@ public class PdhUserManaged implements Serializable {
     @EJB
     private PdhUsersDAO pdhUserDAO;
 
+    @EJB
     private PdhUser pdhUser;
 
+    @EJB
     private PdhUser requestedPdhUserById;
 
     @Inject
@@ -113,7 +115,7 @@ public class PdhUserManaged implements Serializable {
     public void delete() {
         pdhUsersList = null;
         try {
-            pdhUserDAO.delete(requestedPdhUserById);
+            pdhUserDAO.delete(getRequestedPdhUserById());
             pdhUserDAO.refresh();
             JsfUtil.addSuccessMessage(DELETED);
             JsfUtil.executeRequest("delete-dlg");

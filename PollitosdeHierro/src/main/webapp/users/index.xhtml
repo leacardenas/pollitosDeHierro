@@ -62,8 +62,16 @@
                                        rendered="#{!(user.pdhUserUpdatedBy.pdhUserUsername == null or user.pdhUserUpdatedBy.pdhUserUsername == '') and (user.pdhUserCreatedBy.pdhUserUsername == null or user.pdhUserCreatedBy.pdhUserUsername == '')}"/>
                         </p:column>
                             
-                        <p:column filterBy="#{user.pdhUserActive}" headerText="Activo?" filterMatchMode="contains"> 
+                        <p:column filterBy="#{user.pdhUserActive}" headerText="¿Activo?" filterMatchMode="contains"> 
                             <p:outputLabel value="#{user.pdhUserActive ? 'Sí' : 'No'}" />                           
+                        </p:column>
+                        
+                        <p:column filterBy="#{user.pdhUserUsername}" headerText="Usuario" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{user.pdhUserIdentificationNumber}" />                           
+                        </p:column>
+                        
+                        <p:column filterBy="#{user.pdhUserIdentificationNumber}" headerText="ID" filterMatchMode="contains"> 
+                            <p:outputLabel value="#{user.pdhUserIdentificationNumber}" />                           
                         </p:column>
                             
                         <p:column filterBy="#{user.pdhUserName} #{user.pdhUserSurname}" headerText="Nombre" filterMatchMode="contains"> 
@@ -92,12 +100,7 @@
                         
                         <p:column filterBy="#{user.pdhUserIsIt}" headerText="¿Técnico?" filterMatchMode="contains"> 
                             <p:outputLabel value="#{user.pdhUserIsIt ? 'Sí' : 'No'}" />                           
-                        </p:column>
-                        
-                        <p:column filterBy="#{user.pdhUserIdentificationNumber}" headerText="ID" filterMatchMode="contains"> 
-                            <p:outputLabel value="#{user.pdhUserIdentificationNumber}" />                           
-                        </p:column>
-                        
+                        </p:column>                        
                         
                         <p:column styleClass="actions" headerText="Opciones" exportable="false">   
                              <p:commandLink process="@this" resetValues="true" id="rowInfo" onclick="PF('view-dlg').show();" update="viewForm" styleClass="Fleft" > 

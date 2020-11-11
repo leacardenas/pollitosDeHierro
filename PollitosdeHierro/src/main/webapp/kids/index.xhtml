@@ -23,9 +23,9 @@
                         </p:link>
                         <p:tooltip position="top" for="button-dismiss" value="Volver a la pantalla anterior"/>     
 
-                        <p:commandLink id="button-create" styleClass="Fleft" onclick="PF('create-dlg').show();">                                    
+                        <p:link id="button-create" outcome="/kids/create" styleClass="Fleft">
                             <i class="fas fa-plus-circle Fs30"></i>
-                        </p:commandLink>
+                        </p:link>
                         <p:tooltip position="top" for="button-create" value="crear usuario nuevo"/>
                     </div>
 
@@ -100,9 +100,5 @@
             </h:form>
             <br/>
         </div>
-        <ui:include src="create.xhtml"></ui:include>  
-        <!--ui:include src="edit.xhtml"></ui:include> 
-        <ui:include src="delete.xhtml"></ui:include> 
-        <ui:include src="view.xhtml"></ui:include--> 
     </ui:define>
 </ui:composition>
