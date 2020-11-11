@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <p:dialog  header="Borrar" maximizable="true" widgetVar="delete-dlg" modal="true" dynamic="true" >
+        <div class="card card-w-title resolution-center ui-fluid">
+            <h:form id="deleteForm">
+                <h:outputLabel value="¿Esta seguro que quiere borrar el dato?"/>		                       
+                <br/><br/>
+                <p:commandLink id="button-delete" styleClass="Fleft" action="#{pdhHeadquarterManaged.delete()}" update="deleteForm" oncomplete="if (!args.validationFailed){PF('headquarterTable').filter();}">                                    
+                    <i class="fas fa-trash Fs30"></i>
+                </p:commandLink>
+                <p:commandLink process="@this" resetValues="true" id="button-dismiss" onclick="PF('delete-dlg').hide()();" styleClass="Fleft">
+                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                </p:commandLink>
+                <p:tooltip position="top" for="button-dismiss" value="Cancelar"/>
+                <p:tooltip position="top" for="button-delete" value="Borrar"/>                   
+            </h:form>
+            <br/>
+        </div>
+    </p:dialog>    
+</ui:composition>

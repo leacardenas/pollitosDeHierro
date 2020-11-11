@@ -27,7 +27,26 @@
                             </div>
                         </p:link>
                     </c:if>
+                    
+                    <c:if test="#{userLoginManaged.user.pdhUserIsIt or userLoginManaged.user.pdhUserIsAdmin}">
+                        <p:link outcome="headquarter/index">
+                            <div class="overview-box checkin">
+                                <i class="overview-icon fas fa-building"></i>
+                                <span class="overview-title">Sedes</span>  
+                            </div>
+                        </p:link>
+                    </c:if>
+                    
+                    <c:if test="#{userLoginManaged.user.pdhUserIsIt or userLoginManaged.user.pdhUserIsAdmin}">
+                        <p:link outcome="locations/index">
+                            <div class="overview-box checkin">
+                                <i class="overview-icon fas fa-location-arrow"></i>
+                                <span class="overview-title">Localizaciones</span>  
+                            </div>
+                        </p:link>
+                    </c:if>
                 </p:panelGrid>
+
             </div>
         </div>         
     </ui:define>

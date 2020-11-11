@@ -40,9 +40,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "PdhGeolocations.findAll", query = "SELECT p FROM PdhGeolocations p")
     , @NamedQuery(name = "PdhGeolocations.findByPdhGeolocationsId", query = "SELECT p FROM PdhGeolocations p WHERE p.pdhGeolocationsId = :pdhGeolocationsId")
     , @NamedQuery(name = "PdhGeolocations.findByPdhGeolocationsCreatedDate", query = "SELECT p FROM PdhGeolocations p WHERE p.pdhGeolocationsCreatedDate = :pdhGeolocationsCreatedDate")
-    , @NamedQuery(name = "PdhGeolocations.findByPdhGeolocationsUpdatedDate", query = "SELECT p FROM PdhGeolocations p WHERE p.pdhGeolocationsUpdatedDate = :pdhGeolocationsUpdatedDate")
-    , @NamedQuery(name = "PdhGeolocations.findByPdhGeolocationsParent", query = "SELECT p FROM PdhGeolocations p WHERE p.pdhGeolocationsParent = :pdhGeolocationsParent")})
+    , @NamedQuery(name = "PdhGeolocations.findByPdhGeolocationsUpdatedDate", query = "SELECT p FROM PdhGeolocations p WHERE p.pdhGeolocationsUpdatedDate = :pdhGeolocationsUpdatedDate")})
 public class PdhGeolocations implements Serializable {
+
+    @OneToMany(mappedBy = "pdhHeadquarterLocation")
+    private Collection<PdhHeadquarter> pdhHeadquarterCollection;
 
     @OneToMany(mappedBy = "pdhUserCity")
     private Collection<PdhUser> pdhUserCollection;
@@ -67,8 +69,6 @@ public class PdhGeolocations implements Serializable {
     @Size(max = 65535)
     @Column(name = "pdh_geolocations_name")
     private String pdhGeolocationsName;
-    @Column(name = "pdh_geolocations_parent")
-    private Integer pdhGeolocationsParent;
     @JoinColumn(name = "pdh_geolocations_created_by", referencedColumnName = "pdh_user_id")
     @ManyToOne
     private PdhUser pdhGeolocationsCreatedBy;
@@ -121,14 +121,6 @@ public class PdhGeolocations implements Serializable {
 
     public void setPdhGeolocationsName(String pdhGeolocationsName) {
         this.pdhGeolocationsName = pdhGeolocationsName;
-    }
-
-    public Integer getPdhGeolocationsParent() {
-        return pdhGeolocationsParent;
-    }
-
-    public void setPdhGeolocationsParent(Integer pdhGeolocationsParent) {
-        this.pdhGeolocationsParent = pdhGeolocationsParent;
     }
 
     public PdhUser getPdhGeolocationsCreatedBy() {
@@ -233,6 +225,15 @@ public class PdhGeolocations implements Serializable {
 
     public void setPdhUserCollection2(Collection<PdhUser> pdhUserCollection2) {
         this.pdhUserCollection2 = pdhUserCollection2;
+    }
+
+    @XmlTransient
+    public Collection<PdhHeadquarter> getPdhHeadquarterCollection() {
+        return pdhHeadquarterCollection;
+    }
+
+    public void setPdhHeadquarterCollection(Collection<PdhHeadquarter> pdhHeadquarterCollection) {
+        this.pdhHeadquarterCollection = pdhHeadquarterCollection;
     }
     
 }

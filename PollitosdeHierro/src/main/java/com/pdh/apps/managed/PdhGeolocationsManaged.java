@@ -166,14 +166,6 @@ public class PdhGeolocationsManaged implements Serializable {
         this.pdhGeolocation = pdhGeolocation;
     }
 
-    public PdhGeolocations getRequestedPdhGeolocationById() {
-        return requestedPdhGeolocationById;
-    }
-
-    public void setRequestedPdhGeolocationById(PdhGeolocations requestedPdhGeolocationById) {
-        this.requestedPdhGeolocationById = requestedPdhGeolocationById;
-    }
-
     /**
      * @return the requestedPdhGeolocationById
      */

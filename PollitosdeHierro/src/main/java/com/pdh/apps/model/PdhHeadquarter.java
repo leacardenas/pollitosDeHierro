@@ -44,6 +44,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PdhHeadquarter.findByPdhHeadquarterLocation", query = "SELECT p FROM PdhHeadquarter p WHERE p.pdhHeadquarterLocation = :pdhHeadquarterLocation")})
 public class PdhHeadquarter implements Serializable {
 
+    @JoinColumn(name = "pdh_headquarter_location", referencedColumnName = "pdh_geolocations_id")
+    @ManyToOne
+    private PdhGeolocations pdhHeadquarterLocation;
+
     @Column(name = "pdh_headquarter_updated_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date pdhHeadquarterUpdatedDate;
@@ -65,8 +69,6 @@ public class PdhHeadquarter implements Serializable {
     @Column(name = "pdh_headquarter_created_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date pdhHeadquarterCreatedDate;
-    @Column(name = "pdh_headquarter_location")
-    private Integer pdhHeadquarterLocation;
     @JoinColumn(name = "pdh_headquarter_created_by", referencedColumnName = "pdh_user_id")
     @ManyToOne
     private PdhUser pdhHeadquarterCreatedBy;
@@ -113,14 +115,6 @@ public class PdhHeadquarter implements Serializable {
 
     public void setPdhHeadquarterCreatedDate(Date pdhHeadquarterCreatedDate) {
         this.pdhHeadquarterCreatedDate = pdhHeadquarterCreatedDate;
-    }
-
-    public Integer getPdhHeadquarterLocation() {
-        return pdhHeadquarterLocation;
-    }
-
-    public void setPdhHeadquarterLocation(Integer pdhHeadquarterLocation) {
-        this.pdhHeadquarterLocation = pdhHeadquarterLocation;
     }
 
     public PdhUser getPdhHeadquarterCreatedBy() {
@@ -179,6 +173,14 @@ public class PdhHeadquarter implements Serializable {
 
     public void setPdhHeadquarterUpdatedDate(Date pdhHeadquarterUpdatedDate) {
         this.pdhHeadquarterUpdatedDate = pdhHeadquarterUpdatedDate;
+    }
+
+    public PdhGeolocations getPdhHeadquarterLocation() {
+        return pdhHeadquarterLocation;
+    }
+
+    public void setPdhHeadquarterLocation(PdhGeolocations pdhHeadquarterLocation) {
+        this.pdhHeadquarterLocation = pdhHeadquarterLocation;
     }
     
 }

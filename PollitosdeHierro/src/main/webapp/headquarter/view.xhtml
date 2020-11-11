@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                >
+    
+    <p:dialog header="Crear" maximizable="true" widgetVar="view-dlg" modal="true" dynamic="true" >
+        <div class="card card-w-title resolution-center ui-fluid">
+            <h:form id="viewForm">
+                <p:panelGrid columns="5" layout="grid" style="border:0px !important; background:none;"  columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
+                    <p:panelGrid>
+                        <p:outputLabel for="code" value="Código:"/>
+                        <p:inputText disabled="true" id="code" value="#{pdhHeadquarterManaged.requestedPdhHeadquarterById.pdhHeadquarterCode}" required="true" requiredMessage="El código es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid>
+                        <p:outputLabel for="name" value="Nombre:"/>
+                        <p:inputText disabled="true" id="name" value="#{pdhHeadquarterManaged.requestedPdhHeadquarterById.pdhHeadquarterName}" required="true" requiredMessage="El nombre es un campo requerido" maxlength="200"/>
+                    </p:panelGrid>
+                        
+                    <p:panelGrid>
+                        <p:outputLabel for="location" value="Localización:"/>
+                        <p:selectOneMenu disabled="true" id="location" converter="#{pdhLocationConverter}" value="#{pdhHeadquarterManaged.requestedPdhHeadquarterById.pdhHeadquarterLocation}" filter="true" filterMatchMode="contains">
+                            <f:selectItem itemLabel="Seleccione uno..." itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pdhGeolocationsManaged.pdhGeolocations}" var="location" itemValue="#{location}" itemLabel="#{location.pdhGeolocationsName}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                </p:panelGrid>
+                    
+                <p:tooltip position="top" for="code" value="Código de referencia"/>
+                <p:tooltip position="top" for="name" value="Nombre del usuario"/>
+                <p:tooltip position="top" for="location" value="¿Cuál sería la localización de la sede?"/>
+                
+                <p:commandLink id="button-dismiss-bottom" styleClass="Fleft" onclick="PF('view-dlg').hide();">                                    
+                    <i class="fas fa-arrow-circle-left Fs30"></i>
+                </p:commandLink>
+                <p:tooltip position="top" for="button-dismiss-bottom" value="Cancelar"/>                     
+            </h:form>
+            <br/>
+        </div>
+    </p:dialog>  
+</ui:composition>
