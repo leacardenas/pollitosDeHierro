@@ -42,7 +42,7 @@ public class IntegerNumberValidator implements Validator {
 
         matcher = pattern.matcher(value.toString());
         if (!matcher.matches()) {
-            FacesMessage msg = new FacesMessage(JsfUtil.getMessage("INTEGER.NUMBER.VALIDATOR"), JsfUtil.getMessage("INTEGER.NUMBER.VALIDATOR"));
+            FacesMessage msg = new FacesMessage("Por favor usar un número entero", "Por favor usar un número entero");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }

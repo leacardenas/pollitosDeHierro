@@ -139,10 +139,10 @@ public final class JsfUtil {
         return request.getContextPath();
     }
 
-    public static String getMessage(String key) {
-        ResourceBundle messages = ResourceBundle.getBundle(MESSAGES, Faces.getContext().getViewRoot().getLocale());
-        return messages.getString(key);
-    }
+//    public static String getMessage(String key) {
+//        ResourceBundle messages = ResourceBundle.getBundle(MESSAGES, Faces.getContext().getViewRoot().getLocale());
+//        return messages.getString(key);
+//    }
 
     public static ResourceBundle getMessageBundle(String language) {
         ResourceBundle messages;

@@ -18,28 +18,15 @@
                 <p:growl life="10000" id="generalGrowl"  escape="false" showDetail="true" showSummary="false"> <p:autoUpdate /> </p:growl>
                 <div class="TexAlCenter">
                     <div class="TexAlLeft">
-                        <p:commandLink id="button-create" styleClass="Fleft" onclick="PF('create-dlg').show();">                                    
-                            <i class="fas fa-plus-circle Fs30"></i>
-                        </p:commandLink>
-                        <p:tooltip position="top" for="button-create" value="crear usuario nuevo"/>
-                            
                         <p:link id="button-dismiss" outcome="/configure" styleClass="Fleft">
                             <i class="fas fa-arrow-circle-left Fs30"></i>
                         </p:link>
                         <p:tooltip position="top" for="button-dismiss" value="Volver a la pantalla anterior"/>     
                             
-                        <p:commandLink id="exportExcel">
-                            <i class="fas fa-file-excel Fs30"></i>
-                            <p:dataExporter encoding="ISO-8859-1" type="xls" target="userTable" fileName="Usuarios del sistema" />
+                        <p:commandLink id="button-create" styleClass="Fleft" onclick="PF('create-dlg').show();">                                    
+                            <i class="fas fa-plus-circle Fs30"></i>
                         </p:commandLink>
-                            
-                        <p:commandLink id="exportPDF">
-                            <i class="fas fa-file-pdf Fs30"></i>
-                            <p:dataExporter encoding="ISO-8859-1" type="pdf" target="userTable" fileName="Usuarios del sistema"/>
-                        </p:commandLink>
-                            
-                        <p:tooltip position="top" for="exportExcel" value="Exportar en hoja de calculo"/>
-                        <p:tooltip position="top" for="exportPDF" value="Exportar en PDF"/>
+                        <p:tooltip position="top" for="button-create" value="crear usuario nuevo"/>
                     </div>
                         
                     <h2 class="CardTopic TexAlCenter Fs25">Usuarios del sistema</h2>

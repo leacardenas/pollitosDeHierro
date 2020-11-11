@@ -59,7 +59,7 @@ public class PdhUser implements Serializable {
     private String pdhUserTimezone;
 
     @Column(name = "pdh_user_active")
-    private Boolean pdhUserActive;
+    private Boolean pdhUserActive = Boolean.TRUE;
     @JoinColumn(name = "pdh_user_kid", referencedColumnName = "pdh_kid_id")
     @ManyToOne
     private PdhKid pdhUserKid;

@@ -202,4 +202,23 @@ public class PdhUserManaged implements Serializable {
     public void setTimeZoneIDs(String[] timeZoneIDs) {
         this.timeZoneIDs = timeZoneIDs;
     }
+    
+    public void isHeadquarterManager(PdhUser user){
+        user.setPdhUserIsSponsor(Boolean.FALSE);
+        user.setPdhUserIsVoluntary(Boolean.FALSE);
+    }
+    
+    public void isSponsor(PdhUser user){
+        user.setPdhUserIsHeadquarterManager(Boolean.FALSE);
+        user.setPdhUserIsVoluntary(Boolean.FALSE);
+    }
+    
+    public void isVoluntary(PdhUser user){
+        user.setPdhUserIsSponsor(Boolean.FALSE);
+        user.setPdhUserIsHeadquarterManager(Boolean.FALSE);
+    }
+    
+    public void isAdmin(PdhUser user){
+        user.setPdhUserIsIt(Boolean.FALSE);
+    }
 }

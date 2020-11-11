@@ -36,14 +36,14 @@ public class DoubleNumberValidator implements Validator {
         try {
             matcher = pattern.matcher(value.toString());
             if (!matcher.matches()) {
-                FacesMessage msg = new FacesMessage(JsfUtil.getMessage("INTEGER.NUMBER.VALIDATOR"), JsfUtil.getMessage("INTEGER.NUMBER.VALIDATOR"));
+                FacesMessage msg = new FacesMessage("Por favor use números correcto", "Por favor use números correcto");
                 msg.setSeverity(FacesMessage.SEVERITY_ERROR);
                 throw new ValidatorException(msg);
             }
 
         } catch (Exception e) {
             LOGGER.error(e);
-            FacesMessage msg = new FacesMessage(JsfUtil.getMessage("ERROR.VALIDATING.NUMBER"), JsfUtil.getMessage("ERROR.VALIDATING.NUMBER") + ". " + e);
+            FacesMessage msg = new FacesMessage("Por favor use números correcto", "Por favor use números correcto" + ". " + e);
             throw new ValidatorException(msg);
         }
     }
